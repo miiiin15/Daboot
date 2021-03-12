@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">다붓다붓</string>
+    <string name="title_home">홈</string>
+    <string name="title_board">게시판</string>
+    <string name="title_matching">매칭</string>
+    <string name="title_welfare">복지</string>
+    <string name="title_info">내정보</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name = "find">
+        <item>"아이디 찾기"</item>
+        <item>"비밀번호 찾기"</item>
+    </string-array>
+
+    <string-array name="boards">
+        <item>질문있습니다.</item>
+        <item>질문하지 마세요.</item>
+        <item>Im missing U taesu</item>
+        <item>Me too Sihyeon...</item>
+        <item>ㅅㅂㄻ</item>
+        <item>3월2주차 식단표</item>
+        <item>버스 옴?</item>
+        <item>기숙사 ㄹㅇ</item>
+        <item>초특가 야놀자</item>
+        <item>안 자는 사람?</item>
+        <item>송담이 3대 500</item>
+    </string-array>
+</resources>

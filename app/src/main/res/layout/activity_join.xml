@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="회 원 가 입"
+        android:textAlignment="center"
+        android:textSize="25dp"
+
+        android:layout_marginBottom="10dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:background="@drawable/sq_bk"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:hint="아이디를 입력하세요."/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="중복 확인"
+            android:textColor="#F8FAFF"
+            android:textSize="8dp"/>
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:text="4~20자리의 영문과 숫자"/>
+    
+
+    <EditText
+        android:background="@drawable/sq_bk"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:hint="비밀번호를 입력하세요."/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:text="4~20자리의 영문과 숫자"/>
+    <EditText
+
+        android:background="@drawable/sq_bk"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:hint="비밀번호 확인."/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:text="4~20자리의 영문과 숫자"/>
+
+    <EditText
+        android:background="@drawable/sq_bk"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:hint="이름을 입력하세요."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textSize="10dp"
+        android:textColor="#F8FAFF"
+        android:text="2~6자의 한글 이름"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="#F8FAFF"
+        android:textSize="20dp"
+        android:text="회 원 가 입" />
+
+</LinearLayout>
