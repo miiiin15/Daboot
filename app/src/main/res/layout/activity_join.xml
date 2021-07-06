@@ -91,8 +91,47 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:textSize="10dp"
-        android:textColor="#F8FAFF"
+        android:textColor="#aaaaaa"
         android:text="2~6자의 한글 이름"/>
+
+    <EditText
+        android:background="@drawable/sq_bk"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:hint="이메일을 입력하세요."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:textSize="10dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:background="@drawable/sq_bk"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:hint="증명사진 첨부."/>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="찾기"
+            android:textColor="#F8FAFF"
+            android:textSize="8.5dp"/>
+
+
+    </LinearLayout>
+
 
 
     <Button
@@ -101,6 +140,6 @@
         android:layout_margin="10dp"
         android:textColor="#F8FAFF"
         android:textSize="20dp"
-        android:text="회 원 가 입" />
+        android:text="가 입 신 청" />
 
 </LinearLayout>

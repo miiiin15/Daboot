@@ -3,6 +3,7 @@ package com.example.daboot;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Join extends AppCompatActivity {
@@ -11,5 +12,8 @@ public class Join extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_join);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();//상단바 제거
     }
 }

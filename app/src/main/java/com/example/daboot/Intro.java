@@ -6,6 +6,7 @@ import android.os.CountDownTimer;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Intro extends AppCompatActivity {
@@ -17,6 +18,8 @@ public class Intro extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();//상단바 제거
         new CountDownTimer(3000, 1000){
             public void onTick(long millisUntilFinished){
 

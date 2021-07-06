@@ -3,33 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
-
-    <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.example.daboot.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+    app:startDestination="@+id/navigation_board">
 
     <fragment
         android:id="@+id/navigation_board"
-        android:name="com.example.daboot.ui.dashboard.DashboardFragment"
+        android:name="com.example.daboot.fragments.Board"
         android:label="@string/title_board"
         tools:layout="@layout/fragment_board" />
 
     <fragment
+        android:id="@+id/navigation_message"
+        android:name="com.example.daboot.fragments.Message"
+        android:label="@string/title_message"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
         android:id="@+id/navigation_matching"
-        android:name="com.example.daboot.ui.notifications.NotificationsFragment"
+        android:name="com.example.daboot.fragments.Matching"
         android:label="@string/title_matching"
         tools:layout="@layout/fragment_matching" />
     <fragment
-        android:id="@+id/navigation_welfare"
-        android:name="com.example.daboot.navigation_welfare"
-        android:label="@string/title_welfare"
-        tools:layout="@layout/fragment_welfare" />
-    <fragment
-        android:id="@+id/navgation_info"
-        android:name="com.example.daboot.Info"
+        android:id="@+id/navigation_info"
+        android:name="com.example.daboot.fragments.Info"
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
+
+    <fragment
+        android:id="@+id/navigation_setting"
+        android:name="com.example.daboot.fragments.Setting"
+        android:label="@string/title_setting"
+        tools:layout="@layout/fragment_setting" />
+
 </navigation>

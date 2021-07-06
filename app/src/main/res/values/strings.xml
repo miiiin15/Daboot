@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">다붓다붓</string>
-    <string name="title_home">홈</string>
     <string name="title_board">게시판</string>
     <string name="title_matching">매칭</string>
-    <string name="title_welfare">복지</string>
+    <string name="title_message">대화</string>
     <string name="title_info">내정보</string>
+    <string name="title_setting">설정</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string-array name = "find">
+    <string-array name="find">
         <item>"아이디 찾기"</item>
         <item>"비밀번호 찾기"</item>
     </string-array>
