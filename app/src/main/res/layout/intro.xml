@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="인트로"
+        android:text="로딩"
         android:textSize="50dp"/>
     <TextView
         android:id="@+id/tv1"
