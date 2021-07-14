@@ -9,13 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DaBoot">
-        <activity android:name=".Login">
-
-        </activity>
+        <activity android:name=".Login"/>
         <activity android:name=".Join"/>
-        <activity android:name=".Intro">
-
-        </activity>
+        <activity android:name=".Intro"/>
         <activity android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
