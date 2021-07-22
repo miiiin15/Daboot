@@ -1,5 +1,6 @@
 package com.example.daboot.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.example.daboot.Adapter.BoardAdapter;
 import com.example.daboot.BoardItem;
 import com.example.daboot.R;
+import com.example.daboot.Write;
 
 public class Board extends Fragment {
 
@@ -123,7 +125,8 @@ public class Board extends Fragment {
         btn_write.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), Write.class);
+                startActivity(intent);
             }
         });
 
