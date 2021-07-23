@@ -99,7 +99,7 @@ public class Board extends Fragment {
                 bar_catagory.setVisibility(View.GONE);
                 bar_filter.setVisibility(View.VISIBLE);
             }
-        }); // 상단바 (카테고리 -> 필터)
+        }); // 상단바 전환(카테고리 -> 필터)
 
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +107,7 @@ public class Board extends Fragment {
                 bar_filter.setVisibility(View.GONE);
                 bar_catagory.setVisibility(View.VISIBLE);
             }
-        }); // 상단바 (필터 -> 카테고리)
+        }); // 상단바 전환(필터 -> 카테고리)
 
         btn_select_option.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +119,7 @@ public class Board extends Fragment {
                 btns_select_option.setVisibility(View.VISIBLE);
 
             }
-        }); // (필터링 상태일때) 필터 옵션 on/off
+        }); // (필터링 상태일때) 필터 옵션(제목 / 내용) on/off
 
 
         btn_write.setOnClickListener(new View.OnClickListener() {
