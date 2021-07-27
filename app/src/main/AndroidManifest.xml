@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.daboot">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +14,7 @@
         <activity android:name=".Login"/>
         <activity android:name=".Join"/>
         <activity android:name=".Intro"/>
-        <activity android:name=".Write"/>
+        <activity android:name=".Board.Write"/>
         <activity android:name=".MatchingList" />
         <activity android:name=".MatchingFilter" />
         <activity android:name=".MainActivity"

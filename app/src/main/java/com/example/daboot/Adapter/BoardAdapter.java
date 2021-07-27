@@ -11,15 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.daboot.BoardItem;
+
+import com.example.daboot.Board.BoardItem;
 import com.example.daboot.R;
 
 import java.util.ArrayList;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> {
-    Context context;
 
     ArrayList<BoardItem> items = new ArrayList<BoardItem>();
+    Context context; //선택한 activty에 대한 context
 
     //클릭이벤트처리 정의
     OnItemClickListener listener;
@@ -28,15 +29,13 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     }
 
 
-
-    public BoardAdapter(Context context){
-        this.context =  context;
+    public BoardAdapter(ArrayList<BoardItem> items, Context context) {
+        this.items = items;
+        this.context = context;
     }
 
-    @Override //어댑터에서 관리하는 아이템의 개수를 반환
-    public int getItemCount() {
-        return items.size();
-    }
+    @Override //null이 아니라면 어댑터에서 관리하는 아이템의 개수를 반환
+    public int getItemCount() { return (items != null? items.size() : 0); }
 
 
     @NonNull
@@ -53,9 +52,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-
-        BoardItem item = items.get(position); //리사이클러뷰에서 몇번쨰게 지금 보여야되는시점이다 알려주기위해
-        viewHolder.setItem(item);
+        viewHolder.tv_category.setText(items.get(position).getCategory());
+        viewHolder.tv_title.setText(items.get(position).getTitle());
+        viewHolder.tv_comment.setText(items.get(position).getComment());
+        viewHolder.tv_writetime.setText(items.get(position).getTime());
         //클릭리스너
         viewHolder.setOnItemClickListener(listener);
 
@@ -84,7 +84,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     //뷰홀더
     //뷰를 담아두는 역할 / 뷰에 표시될 데이터를 설정하는 역할
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_category,tv_title,tv_coment,tv_writetime;
+        TextView tv_category,tv_title, tv_comment,tv_writetime;
 
 
 
@@ -95,7 +95,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
             tv_category = itemView.findViewById(R.id.tv_category);
             tv_title = itemView.findViewById(R.id.tv_title);
-            tv_coment = itemView.findViewById(R.id.tv_coment);
+            tv_comment = itemView.findViewById(R.id.tv_comment);
             tv_writetime = itemView.findViewById(R.id.tv_write_time);
 
 
@@ -109,13 +109,6 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
                     }
                 }
             });
-        }
-
-        public void setItem(BoardItem item) {
-            tv_category.setText(item.getCategory());
-            tv_title.setText(item.getTitle());
-            tv_coment.setText(item.getComent());
-            tv_writetime.setText(item.getTime());
         }
 
 
