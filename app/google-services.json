@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "923094983753",
+    "firebase_url": "https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "daboot-4979e",
+    "storage_bucket": "daboot-4979e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923094983753:android:d058db2b4d5df941c14b98",
+        "android_client_info": {
+          "package_name": "com.example.daboot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923094983753-q200s6s9aojvh6o98ddi86as13pmh056.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVIpHfJu0fEfbKxGxp1_ld-JRfc1pa_Xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923094983753-q200s6s9aojvh6o98ddi86as13pmh056.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

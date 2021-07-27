@@ -1,4 +1,4 @@
-package com.example.daboot;
+package com.example.daboot.Board;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -8,6 +8,8 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.daboot.R;
 
 public class Write extends AppCompatActivity {
 
