@@ -1,15 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="매칭 페이지"
-        android:textSize="40dp"/>
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fragment_matching"
+            android:gravity="center"
+            android:textSize="35sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="분야"
+                android:textSize="35sp" />
+
+            <CheckBox
+                android:id="@+id/chk_box1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="노인" />
+
+            <CheckBox
+                android:id="@+id/chk_box2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아동" />
+
+            <CheckBox
+                android:id="@+id/chk_box3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가족" />
+
+            <CheckBox
+                android:id="@+id/chk_box4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="의료" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="지역"
+                android:textSize="35sp" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_marginTop="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="지역을 선택해주세요"
+                android:textColor="@color/black"
+                android:textSize="10dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="경력"
+                android:textSize="35sp" />
+            <CheckBox
+                android:id="@+id/chk_box5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경력없음"/>
+            <CheckBox
+                android:id="@+id/chk_box6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1년이상"/>
+            <CheckBox
+                android:id="@+id/chk_box7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5년이상"/>
+            <CheckBox
+                android:id="@+id/chk_box8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10년이상"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                android:textSize="35sp" />
+            <CheckBox
+                android:id="@+id/chk_box9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="무관"/>
+            <CheckBox
+                android:id="@+id/chk_box10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남자"/>
+            <CheckBox
+                android:id="@+id/chk_box11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="여자"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="우선도"
+                android:textSize="35sp" />
+            <CheckBox
+                android:id="@+id/chk_box12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="무관"/>
+            <CheckBox
+                android:id="@+id/chk_box13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="거리"/>
+            <CheckBox
+                android:id="@+id/chk_box14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="경력"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="복지사명"
+                android:textSize="35sp" />
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이름을 입력해주세요 (필수X)" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_search"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:textStyle="bold"
+            android:text="검색"
+            android:textSize="25dp" />
+    </LinearLayout>
 
 </LinearLayout>
