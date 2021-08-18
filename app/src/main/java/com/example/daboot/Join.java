@@ -1,5 +1,6 @@
 package com.example.daboot;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,8 @@ public class Join extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Join.this, Login.class);
+
                 String strID = edt_Id.getText().toString();
                 String strPWD = edt_Pwd.getText().toString();
 
@@ -64,6 +67,8 @@ public class Join extends AppCompatActivity {
                             mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
 
                            Toast.makeText(getApplicationContext(),"회원가입 신청 완료",Toast.LENGTH_SHORT).show();
+                           startActivity(intent);
+                           finish();
                         }
                         else{
                             Toast.makeText(getApplicationContext(),"실패",Toast.LENGTH_SHORT).show();

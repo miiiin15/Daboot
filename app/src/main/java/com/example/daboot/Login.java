@@ -69,7 +69,6 @@ public class Login extends AppCompatActivity {
         btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(Login.this,"회원가입",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(Login.this,Join.class);
                 startActivity(intent);
             }
