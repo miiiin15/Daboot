@@ -20,22 +20,27 @@ public class MatchingList extends AppCompatActivity {
         TextView tx2 = (TextView)findViewById(R.id.tv_02);
         TextView tx3 = (TextView)findViewById(R.id.tv_03);
         TextView tx4 = (TextView)findViewById(R.id.tv_04);
-
+        TextView tx5 = (TextView)findViewById(R.id.tv_05);
+        TextView tx6 = (TextView)findViewById(R.id.tv_06);
         Intent intent = getIntent();
 
+        String field = intent.getExtras().getString("field");
+        tx1.setText(field);
+
         String area = intent.getExtras().getString("area");
-        tx1.setText(area);
+        tx2.setText(area);
 
         String career = intent.getExtras().getString("career");
-        tx2.setText(career);
+        tx3.setText(career);
 
         String sex = intent.getExtras().getString("sex");
-        tx3.setText(sex);
+        tx4.setText(sex);
 
         String first = intent.getExtras().getString("first");
-        tx4.setText(first);
+        tx5.setText(first);
 
-
+        String name = intent.getExtras().getString("name");
+        tx6.setText(name);
 
 
 
