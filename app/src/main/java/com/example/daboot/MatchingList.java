@@ -16,32 +16,25 @@ public class MatchingList extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
-        TextView tx1 = (TextView)findViewById(R.id.tv_01);
-        TextView tx2 = (TextView)findViewById(R.id.tv_02);
-        TextView tx3 = (TextView)findViewById(R.id.tv_03);
-        TextView tx4 = (TextView)findViewById(R.id.tv_04);
-        TextView tx5 = (TextView)findViewById(R.id.tv_05);
-        TextView tx6 = (TextView)findViewById(R.id.tv_06);
+        TextView tv_name = (TextView)findViewById(R.id.tv_name);
+        TextView tv_sex = (TextView)findViewById(R.id.tv_sex);
+        TextView tv_area = (TextView)findViewById(R.id.tv_area);
+        TextView tv_field = (TextView)findViewById(R.id.tv_field);
+        TextView tv_career = (TextView)findViewById(R.id.tv_career);
+        TextView tv_first = (TextView)findViewById(R.id.tv_first);
         Intent intent = getIntent();
 
-        String field = intent.getExtras().getString("field");
-        tx1.setText(field);
-
-        String area = intent.getExtras().getString("area");
-        tx2.setText(area);
-
-        String career = intent.getExtras().getString("career");
-        tx3.setText(career);
+        String name = intent.getExtras().getString("name");
+        tv_name.setText(name);
 
         String sex = intent.getExtras().getString("sex");
-        tx4.setText(sex);
+        tv_sex.setText(sex);
 
-        String first = intent.getExtras().getString("first");
-        tx5.setText(first);
+        String area = intent.getExtras().getString("area");
+        tv_area.setText(area);
 
-        String name = intent.getExtras().getString("name");
-        tx6.setText(name);
-
+        String field = intent.getExtras().getString("field");
+        tv_field.setText(field);
 
 
     }
