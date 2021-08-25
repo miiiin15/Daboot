@@ -3,10 +3,12 @@ package com.example.daboot.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.daboot.Adapter.BoardAdapter;
-import com.example.daboot.BoardItem;
+import com.example.daboot.Board.BoardItem;
 import com.example.daboot.R;
-import com.example.daboot.Write;
+import com.example.daboot.Board.Write;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Board extends Fragment {
 
@@ -28,8 +37,13 @@ public class Board extends Fragment {
 
     LinearLayout bar_catagory, bar_filter, btns_select_option; // 상단바 카테고리(기본), 필터, 필터 옵션
 
-    RecyclerView view_board;
+    RecyclerView view_board; //게시판
+    LinearLayoutManager layoutManager;
     BoardAdapter boardAdapter;
+    ArrayList<BoardItem> arrayList;
+
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
 
     Button btn_filter,btn_close, btn_select_option;
     Button btn_write;
@@ -54,19 +68,37 @@ public class Board extends Fragment {
 
         /* 게시판 관련 선언부 */
         view_board = view.findViewById(R.id.view_board);
-        btn_write = view.findViewById(R.id.btn_write);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        view_board.setHasFixedSize(true); // 리사이클러뷰 성능강화
+        layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         view_board.setLayoutManager(layoutManager);
-        boardAdapter = new BoardAdapter(getContext());
+
+        arrayList = new ArrayList<>();
+        btn_write = view.findViewById(R.id.btn_write);
 
 
-        //아이템추가 todo: 나중에는 이렇게 임의로 안넣고 파이어베이스와 연동할 예정 - 삭제 할 부분임
-        boardAdapter.addItem(new BoardItem("자유", "안녕하세요?","3","00 : 00"));
-        boardAdapter.addItem(new BoardItem("자유", "반갑습니다.","3","00 : 00"));
-        boardAdapter.addItem(new BoardItem("장터", "test입니다.","3","00 : 00"));
-        boardAdapter.addItem(new BoardItem("질문", "비오나?","3","00 : 00"));
-        boardAdapter.addItem(new BoardItem("자유", "더워요..","3","00 : 00"));
+        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
+        databaseReference = database.getReference("Board"); //DB테이블 연결
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //파이어베이스 DB데이터 받아오는 함수
+                arrayList.clear();
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){ //데이터 리스트 추출
+                    BoardItem boardItem = snapshot.getValue(BoardItem.class); // 만든 객체에 데이터 담음
+                    arrayList.add(boardItem); //담은 데이터를 배열리스트에 넣고 뷰에 보낼 준비
+                }
+                boardAdapter.notifyDataSetChanged(); // 리스트저장, 새로고침
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("MainActivity", String.valueOf(databaseError.toException())); //DB 가져오다 에러 날 때
+            }
+        });
+
+        boardAdapter = new BoardAdapter(arrayList,getContext());
         view_board.setAdapter(boardAdapter);
+
 
         boardAdapter.setOnItemClickListener(new BoardAdapter.OnItemClickListener() {
             @Override
@@ -99,7 +131,7 @@ public class Board extends Fragment {
                 bar_catagory.setVisibility(View.GONE);
                 bar_filter.setVisibility(View.VISIBLE);
             }
-        }); // 상단바 (카테고리 -> 필터)
+        }); // 상단바 전환(카테고리 -> 필터)
 
         btn_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,7 +139,7 @@ public class Board extends Fragment {
                 bar_filter.setVisibility(View.GONE);
                 bar_catagory.setVisibility(View.VISIBLE);
             }
-        }); // 상단바 (필터 -> 카테고리)
+        }); // 상단바 전환(필터 -> 카테고리)
 
         btn_select_option.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +151,7 @@ public class Board extends Fragment {
                 btns_select_option.setVisibility(View.VISIBLE);
 
             }
-        }); // (필터링 상태일때) 필터 옵션 on/off
+        }); // (필터링 상태일때) 필터 옵션(제목 / 내용) on/off
 
 
         btn_write.setOnClickListener(new View.OnClickListener() {

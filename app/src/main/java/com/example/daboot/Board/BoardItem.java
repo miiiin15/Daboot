@@ -1,25 +1,20 @@
-package com.example.daboot;
+package com.example.daboot.Board;
 
 public class BoardItem {
 
-    String category;
-    String title;
-    String coment;
-    String time;
+    private String category;
+    private String title;
+    private String comment;
+    private String time;
 
-    public BoardItem(String category, String title, String coment, String time) {
-        this.category = category;
-        this.title = title;
-        this.coment = coment;
-        this.time = time;
+    public BoardItem() { }
+
+    public String getComment() {
+        return comment;
     }
 
-    public String getComent() {
-        return coment;
-    }
-
-    public void setComent(String coment) {
-        this.coment = coment;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getTime() {

@@ -12,12 +12,14 @@
         android:textSize="40dp"/>
 
     <EditText
+        android:id="@+id/edt_input_ID"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"
 
         android:hint="아이디" />
     <EditText
+        android:id="@+id/edt_input_Password"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:textAlignment="center"

@@ -145,6 +145,7 @@
                 app:iconTint="@color/black" />
         </LinearLayout>
 
+
     </LinearLayout>
     <LinearLayout
         android:id="@+id/btns_select_option"
@@ -176,27 +177,66 @@
             android:text="내용"/>
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/tvs_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/view_board">
+
+        <TextView
+            android:id="@+id/tv_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_alignParentLeft="true"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:text="주제"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:layout_toRightOf="@id/tv_category"
+            android:textStyle="bold"
+            android:text="제목"/>
+
+
+
+        <TextView
+            android:id="@+id/cover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/tv_write_time"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:text="댓글"/>
+
+        <TextView
+            android:id="@+id/tv_write_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginHorizontal="2dp"
+            android:textStyle="bold"
+            android:text="작성시간" />
+
+
+    </RelativeLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/view_board"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_toEndOf="@+id/BAR"
         android:layout_below="@+id/BAR"
+        android:paddingTop="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true">
     </androidx.recyclerview.widget.RecyclerView>
 
-    <!--<ListView
-        android:id="@+id/board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/BAR"
-        android:layout_below="@+id/BAR"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true">
-    </ListView>-->
     <!--<Button
         android:id="@+id/write"
         android:layout_width="50dp"
