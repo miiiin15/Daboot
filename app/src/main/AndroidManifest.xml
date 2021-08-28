@@ -18,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MatchingInfo"/>
         <activity android:name=".Join"/>
         <activity android:name=".Intro"/>
         <activity android:name=".Board.Write"/>
         <activity android:name=".MatchingList" />
-        <activity android:name=".MatchingFilter" />
         <activity android:name=".MainActivity" android:label="@string/app_name"/>
     </application>
 

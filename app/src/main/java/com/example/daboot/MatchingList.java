@@ -16,6 +16,7 @@ public class MatchingList extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
+        /*
         TextView tv_name = (TextView)findViewById(R.id.tv_name);
         TextView tv_sex = (TextView)findViewById(R.id.tv_sex);
         TextView tv_area = (TextView)findViewById(R.id.tv_area);
@@ -35,6 +36,7 @@ public class MatchingList extends AppCompatActivity {
 
         String field = intent.getExtras().getString("field");
         tv_field.setText(field);
+        */
 
 
     }
