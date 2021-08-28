@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/edt_ID"
+            android:id="@+id/edt_join_ID"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -33,6 +33,7 @@
             android:layout_height="match_parent"
             android:text="중복 확인"
             android:textColor="#F8FAFF"
+            android:backgroundTint="@color/enable"
             android:textSize="8dp"/>
 
 
@@ -47,7 +48,7 @@
     
 
     <EditText
-        android:id="@+id/edt_PWD"
+        android:id="@+id/edt_join_pwd"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -62,7 +63,7 @@
         android:textColor="#aaaaaa"
         android:text="4~20자리의 영문과 숫자"/>
     <EditText
-        android:id="@+id/edt_CheckPWD"
+        android:id="@+id/edt_join_pwdCheck"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -78,7 +79,7 @@
         android:text="4~20자리의 영문과 숫자"/>
 
     <EditText
-        android:id="@+id/edt_Name"
+        android:id="@+id/edt_join_Name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -95,7 +96,7 @@
         android:text="2~6자의 한글 이름"/>
 
     <EditText
-        android:id="@+id/edt_Email"
+        android:id="@+id/edt_join_Email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:inputType="text"
@@ -114,7 +115,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <EditText
-            android:id="@+id/edt_Identity"
+            android:id="@+id/edt_join_Identity"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -123,9 +124,10 @@
             android:hint="증명사진 첨부."/>
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btn_join_Identity"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/enable"
             android:text="찾기"
             android:textColor="#F8FAFF"
             android:textSize="8.5dp"/>
@@ -136,10 +138,11 @@
 
 
     <Button
-        android:id="@+id/btn_Submit"
+        android:id="@+id/btn_join_Submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
+        android:backgroundTint="@color/enable"
         android:textColor="#F8FAFF"
         android:textSize="20dp"
         android:text="가 입 신 청" />

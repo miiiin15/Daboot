@@ -1,15 +1,213 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_alignParentTop="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_setting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="시스템 설정"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_setting_alram"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_enable"
+        android:textColor="@color/white"
+        android:text="알람"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_title" />
+
+    <TextView
+        android:id="@+id/tv_setting_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_enable"
+        android:textColor="@color/white"
+        android:text="권한"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_alram" />
+
+    <TextView
+        android:id="@+id/tv_setting_sound_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_enable"
+        android:textColor="@color/white"
+        android:text="소리"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_permission" />
+
+    <TextView
+        android:id="@+id/tv_setting_inquire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_enable"
+        android:textColor="@color/white"
+        android:text="문의"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_sound_permission" />
+
+    <TextView
+        android:id="@+id/tv_setting_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/square_enable"
+        android:textColor="@color/white"
+        android:text="버전"
+        android:textSize="35dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_setting_inquire" />
+
+    <Switch
+        android:id="@+id/btn_alram_coments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="댓글"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_setting_alram"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_alram" />
+
+    <Switch
+        android:id="@+id/btn_sound_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="전체"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_setting_sound_permission"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
+
+    <Switch
+        android:id="@+id/btn_sound_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="쪽지"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_sound_coments"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
+
+    <Switch
+        android:id="@+id/btn_sound_coments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="댓글"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_sound_all"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
+
+    <Switch
+        android:id="@+id/btn_permission_call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="전화"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_setting_permission"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
+
+    <Switch
+        android:id="@+id/btn_permission_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="사진"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/btn_permission_call"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
+
+    <Switch
+        android:id="@+id/btn_permission_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="위치"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_permission_photo"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
+
+    <Switch
+        android:id="@+id/btn_alram_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:track="@drawable/switch_track_selector"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:text="쪽지"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_alram_coments"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_alram" />
+
+    <TextView
+        android:id="@+id/tv_inquire_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="gg04253@gmail.com"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_setting_inquire"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_inquire" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="설정 페이지"
-        android:textSize="40dp"/>
+        android:layout_marginTop="3dp"
+        android:text="Version 1.0"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintStart_toEndOf="@+id/tv_setting_version"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_version" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

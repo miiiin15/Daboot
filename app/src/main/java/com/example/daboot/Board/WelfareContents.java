@@ -10,24 +10,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.daboot.R;
 
-public class Write extends AppCompatActivity {
+public class WelfareContents extends AppCompatActivity {
 
-    Button btn_cancel;
+    private Button btn_back;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board_write_form);
+        setContentView(R.layout.activity_board_welfare_contents);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
-        btn_cancel = findViewById(R.id.btn_board_write_cancel);
+        btn_back = findViewById(R.id.btn_welfare_contents_back);
 
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+
     }
 }

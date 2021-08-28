@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="25dp"
+    android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_board_welfare_item_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_alignParentLeft="true"
+            android:textAlignment="center"
+            android:text="주제"
+            android:textColor="@color/volunteer"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_board_welfare_item_contents_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:layout_toRightOf="@id/tv_board_welfare_item_category"
+            android:text="제목"
+            android:textSize="15dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_board_welfare_item_write_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginHorizontal="5dp"
+            android:textColor="@color/volunteer"
+            android:text="00 : 00"
+            android:textSize="15dp"/>
+
+
+</RelativeLayout>

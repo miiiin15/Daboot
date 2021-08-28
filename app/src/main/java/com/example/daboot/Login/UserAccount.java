@@ -1,4 +1,4 @@
-package com.example.daboot;
+package com.example.daboot.Login;
 
 public class UserAccount {
     private String idToken; //Firebase UID 고유 정보

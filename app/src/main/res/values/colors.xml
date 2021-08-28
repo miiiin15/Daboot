@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="enable">#EC7D31</color>
+    <color name="disable">#dcdcdc</color>
+    <color name="volunteer">#9696FF</color>
+    <color name="user">#FF7493</color>
 </resources>

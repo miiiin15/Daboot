@@ -1,4 +1,4 @@
-package com.example.daboot;
+package com.example.daboot.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.daboot.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,9 +41,9 @@ public class Join extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app").getReference("UserInfo");
 
-        edt_Id = findViewById(R.id.edt_ID);
-        edt_Pwd = findViewById(R.id.edt_PWD);
-        btn_submit = findViewById(R.id.btn_Submit);
+        edt_Id = findViewById(R.id.edt_join_ID);
+        edt_Pwd = findViewById(R.id.edt_join_pwd);
+        btn_submit = findViewById(R.id.btn_join_Submit);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override

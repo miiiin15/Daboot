@@ -1,46 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<!-- androidx.constraintlayout.widget.ConstraintLayout -->
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imgbtn_1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="#00000000"
+            android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/tv_01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="텍스트 1" />
+            android:layout_weight="3"
+            android:gravity="center"
+            android:text="다붓다붓"
+            android:textSize="35sp" />
 
-        <TextView
-            android:id="@+id/tv_02"
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="텍스트 1" />
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:background="#00000000"
+            android:src="@drawable/ic_renew" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_03"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="텍스트 1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_04"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="30dp"
-            android:text="텍스트 1" />
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--이름-->
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="김민태"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--성별-->
+            <TextView
+                android:id="@+id/sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="남자"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--지역-->
+            <TextView
+                android:id="@+id/area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="충북"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--분야-->
+            <TextView
+                android:id="@+id/field"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="    장애, 의료"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--정보보기-->
+            <ImageButton
+                android:id="@+id/imgbtn_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="#00000000"
+                android:src="@drawable/ic_message" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--이름-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="이선재"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--성별-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="남자"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--지역-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="경기도"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--분야-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="노인, 가족, 의료"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--정보보기-->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="22dp"
+                android:background="#00000000"
+                android:src="@drawable/ic_message" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--이름-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="김하나"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--성별-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="여자"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--지역-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="전라도"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--분야-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="의료"
+                android:textSize="16sp"
+                android:textColor="#000" />
+
+            <!--정보보기-->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="99dp"
+                android:background="#00000000"
+                android:src="@drawable/ic_message" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</LinearLayout>

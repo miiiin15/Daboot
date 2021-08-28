@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.daboot.Login.Login;
+
 public class Intro extends AppCompatActivity {
 
     public int counter;
@@ -29,7 +31,7 @@ public class Intro extends AppCompatActivity {
                 counter++;
             }
             public  void onFinish(){
-                Intent intent =new Intent(getApplicationContext(), Login.class);
+                Intent intent = new Intent(getApplicationContext(), Login.class);
                 startActivity(intent);
             }
         }.start();
