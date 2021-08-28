@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaBoot">
         <activity android:name=".Login.Login">
+<<<<<<< HEAD
 
         </activity>
         <activity android:name=".ChatActivity">
+=======
+>>>>>>> 13a1a5c86f1f2bfefd23152c9672371b9f3a9cc7
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,6 +32,7 @@
         <activity android:name=".Board.Welfare"/>
         <activity android:name=".Board.WelfareContents"/>
         <activity android:name=".MatchingList" />
+        <activity android:name=".WelfareInfoDone" />
         <activity android:name=".MainActivity" android:label="@string/app_name"/>
     </application>
 

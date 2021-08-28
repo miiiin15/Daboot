@@ -18,12 +18,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.daboot.MatchingList;
 import com.example.daboot.R;
+import com.example.daboot.WelfareInfoDone;
 
 public class Matching extends Fragment {
 
     String[] items = {"전체", "서울", "경기", "충남", "충북", "경남", "경북", "전남", "전북", "제주"};
     TextView textView;
     ImageButton imageButton;
+    ImageButton imageInfoWrite;
     /*
         분야, 지역, 경력, 성별, 우선도, 복지사 이름
     */
@@ -41,6 +43,7 @@ public class Matching extends Fragment {
         textView = view.findViewById(R.id.textView);
         Spinner spinner = view.findViewById(R.id.spinner);
         imageButton = view.findViewById(R.id.img_search);
+        imageInfoWrite = view.findViewById(R.id.img_info_write);
         EditText edt_name = view.findViewById(R.id.edt_name);
 
         final CheckBox cb1 = view.findViewById(R.id.chk_box1);
@@ -118,6 +121,14 @@ public class Matching extends Fragment {
                     intent.putExtra("name", edt_name.getText().toString());
                 }
 
+                startActivity(intent);
+            }
+        });
+
+        imageInfoWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), WelfareInfoDone.class);
                 startActivity(intent);
             }
         });

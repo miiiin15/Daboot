@@ -253,6 +253,19 @@
             android:layout_marginTop="50dp"
             android:src="@drawable/ic_search" />
 
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square_invisible"
+            android:id="@+id/img_info_write"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_write" />
+
     </LinearLayout>
+
+
+
+
 
 </LinearLayout>
