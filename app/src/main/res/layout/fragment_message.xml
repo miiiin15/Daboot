@@ -45,14 +45,4 @@
 
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/view_board"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true">
-
-    </ListView>
 </RelativeLayout>
