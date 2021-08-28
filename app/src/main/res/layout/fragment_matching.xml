@@ -12,7 +12,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="fragment_matching"
+            android:text="다붓다붓"
             android:gravity="center"
             android:textSize="35sp" />
     </LinearLayout>
@@ -31,8 +31,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="분야"
-                android:textSize="35sp" />
+                android:text="분야     "
+                android:textSize="20sp" />
 
             <CheckBox
                 android:id="@+id/chk_box1"
@@ -74,12 +74,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="지역"
-                android:textSize="35sp" />
+                android:text="지역    "
+                android:textSize="20sp" />
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -108,8 +107,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="경력"
-                android:textSize="35sp" />
+                android:text="경력     "
+                android:textSize="20sp" />
             <CheckBox
                 android:id="@+id/chk_box5"
                 android:layout_width="wrap_content"
@@ -146,8 +145,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="성별"
-                android:textSize="35sp" />
+                android:text="성별     "
+                android:textSize="20sp" />
             <CheckBox
                 android:id="@+id/chk_box9"
                 android:layout_width="wrap_content"
@@ -176,11 +175,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="우선도"
-                android:textSize="35sp" />
+                android:text="우선도  "
+                android:textSize="20sp" />
+
             <CheckBox
                 android:id="@+id/chk_box12"
                 android:layout_width="wrap_content"
@@ -213,7 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="복지사명"
-                android:textSize="35sp" />
+                android:textSize="20sp" />
             <EditText
                 android:id="@+id/edt_name"
                 android:layout_width="match_parent"
