@@ -18,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".WelfareInfoDone"/>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>
         <activity android:name=".Intro"/>
