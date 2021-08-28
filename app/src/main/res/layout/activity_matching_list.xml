@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- androidx.constraintlayout.widget.ConstraintLayout -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/imgbtn_1"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/btn_matching_list_back"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#00000000"
-            android:src="@drawable/ic_back" />
+            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="#ffffff"
+            app:icon="@drawable/ic_back"
+            app:iconTint="@color/enable" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:gravity="center"
-            android:text="다붓다붓"
+            android:text="다 붓 다 붓"
+            android:textColor="@color/enable"
             android:textSize="35sp" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:background="#00000000"
-            android:src="@drawable/ic_renew" />
+            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="#ffffff"
+            app:icon="@drawable/ic_renew"
+            app:iconTint="@color/enable" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -42,15 +45,16 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_marginTop="30dp"
+            android:id="@+id/temp_id"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="25dp"
+            android:background="@drawable/square_invisible">
 
             <!--이름-->
             <TextView
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_marginLeft="20dp"
                 android:text="김민태"
                 android:textSize="16sp"
@@ -99,9 +103,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="25dp"
+            android:background="@drawable/square_invisible">
 
             <!--이름-->
             <TextView
@@ -149,9 +153,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="25dp"
+            android:background="@drawable/square_invisible">
 
             <!--이름-->
             <TextView

@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="다붓다붓"
+            android:textColor="@color/enable"
             android:gravity="center"
             android:textSize="35sp" />
     </LinearLayout>
@@ -20,17 +21,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="분야     "
                 android:textSize="20sp" />
 
@@ -63,17 +66,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="지역    "
                 android:textSize="20sp" />
 
@@ -97,16 +103,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="경력     "
                 android:textSize="20sp" />
             <CheckBox
@@ -135,16 +143,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="성별     "
                 android:textSize="20sp" />
             <CheckBox
@@ -168,17 +178,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal"
         >
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="우선도  "
                 android:textSize="20sp" />
 
@@ -203,16 +215,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/square_invisible"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
+
         >
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
+                android:background="@drawable/square_enable"
+                android:textColor="@color/white"
                 android:text="복지사명"
                 android:textSize="20sp" />
             <EditText
@@ -226,25 +242,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/square_invisible"
             android:id="@+id/img_search"
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:src="@drawable/ic_search" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:textStyle="bold"
-            android:text="검색"
-            android:textSize="25dp" />
     </LinearLayout>
 
 </LinearLayout>
