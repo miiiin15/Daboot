@@ -31,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:background="@drawable/square_invisible"
         android:hint="이름"
         android:inputType="text" />
     <EditText
@@ -38,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:background="@drawable/square_invisible"
         android:hint="번호"
         android:inputType="text" />
 

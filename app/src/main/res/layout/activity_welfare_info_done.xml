@@ -30,7 +30,7 @@
             android:backgroundTint="#ffffff"
             style="?android:attr/borderlessButtonStyle"
             app:icon="@drawable/ic_done"
-            app:iconTint="@color/enable" />
+            app:iconTint="@color/volunteer" />
 
     </LinearLayout>
 
@@ -42,7 +42,7 @@
             android:layout_width="410dp"
             android:layout_height="match_parent">
             <TableRow
-                android:background="@drawable/square_invisible"
+                android:background="@drawable/square_welfare_invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/square_enable"
+                    android:background="@drawable/square_welfare_enable"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:text="이름"
@@ -66,7 +66,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/square_invisible"
+                android:background="@drawable/square_welfare_invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -74,7 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/square_enable"
+                    android:background="@drawable/square_welfare_enable"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:text="지역"
@@ -90,7 +90,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/square_invisible"
+                android:background="@drawable/square_welfare_invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/square_enable"
+                    android:background="@drawable/square_welfare_enable"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:text="연락처"
@@ -113,7 +113,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/square_invisible"
+                android:background="@drawable/square_welfare_invisible"
                 android:layout_width="match_parent"
                 android:layout_height="25dp">
 
@@ -121,7 +121,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/square_enable"
+                    android:background="@drawable/square_welfare_enable"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:text="자격"
@@ -138,7 +138,7 @@
             </TableRow>
 
             <TableRow
-                android:background="@drawable/square_invisible"
+                android:background="@drawable/square_welfare_invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -146,7 +146,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@drawable/square_enable"
+                    android:background="@drawable/square_welfare_enable"
                     android:textColor="@color/white"
                     android:gravity="center"
                     android:text="분야"
@@ -157,7 +157,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:background="@drawable/square_invisible"
+                    android:background="@drawable/square_welfare_invisible"
                     android:gravity="center"
                     android:orientation="horizontal">
 
@@ -168,7 +168,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="장애"
-                        android:textColor="@color/enable" />
+                        android:textColor="@color/volunteer" />
 
                     <TextView
                         android:id="@+id/tv_info_field_old"
@@ -203,7 +203,7 @@
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="의료"
-                        android:textColor="@color/enable" />
+                        android:textColor="@color/volunteer" />
 
                 </LinearLayout>
 
@@ -221,9 +221,42 @@
             android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="250dp"
-            android:background="@drawable/square_invisible"
+            android:background="@drawable/square_welfare_invisible"
             android:text="2012년부터 자격 취득 후 서울 노원복지센터 4년 경기 행복요양원 5년차 근무중인 복지사입니다.
                             미술 치료, 스포츠 마사지사 자격 보유 했으며 언제든 연락주세요" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_launcher_foreground" />
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/volunteer"
+            android:text="+"
+            android:textSize="50dp" />
     </LinearLayout>
 </LinearLayout>

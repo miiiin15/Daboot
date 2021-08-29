@@ -12,17 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaBoot">
         <activity android:name=".Login.Login">
-<<<<<<< HEAD
 
-        </activity>
-        <activity android:name=".ChatActivity">
-=======
->>>>>>> 13a1a5c86f1f2bfefd23152c9672371b9f3a9cc7
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".ChatActivity">
+
         </activity>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>
