@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,8 +26,9 @@ public class Join extends AppCompatActivity {
 
     private FirebaseAuth mFirebaseAuth; //파이어베이스 인증
     private DatabaseReference mDatabaseRef; // 리얼타임 DB
-    private EditText edt_Id, edt_Pwd;
-    private Button btn_submit;
+    private EditText edt_Id, edt_Pwd, edt_Area, edt_Qualification, edt_Field;
+    private Button btn_submit, btn_welfare_mode;
+    private TextView tv_Area, tv_Field, tv_Qualification;
 
 
     @Override
@@ -44,6 +46,13 @@ public class Join extends AppCompatActivity {
         edt_Id = findViewById(R.id.edt_join_ID);
         edt_Pwd = findViewById(R.id.edt_join_pwd);
         btn_submit = findViewById(R.id.btn_join_Submit);
+        edt_Area = findViewById(R.id.edt_join_Area);
+        edt_Field = findViewById(R.id.edt_join_Field);
+        edt_Qualification = findViewById(R.id.edt_join_Qualification);
+        btn_welfare_mode = findViewById(R.id.btn_welfare_mode);
+        tv_Area = findViewById(R.id.tv_join_Area);
+        tv_Field = findViewById(R.id.tv_join_Field);
+        tv_Qualification = findViewById(R.id.tv_join_Qualification);
 
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,5 +88,20 @@ public class Join extends AppCompatActivity {
 
             }
         });
+
+        // 복지사 회원가입 활성화 보이지않던 edt_text 보이기
+        btn_welfare_mode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edt_Area.setVisibility(View.VISIBLE);
+                edt_Field.setVisibility(View.VISIBLE);
+                edt_Qualification.setVisibility(View.VISIBLE);
+                tv_Area.setVisibility(View.VISIBLE);
+                tv_Field.setVisibility(View.VISIBLE);
+                tv_Qualification.setVisibility(View.VISIBLE);
+            }
+        });
+
+
     }
 }

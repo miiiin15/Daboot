@@ -24,7 +24,7 @@ public class MatchingList extends AppCompatActivity {
 
         btn_back = findViewById(R.id.btn_matching_list_back);
 
-        tmp = findViewById(R.id.temp_id); //todo: 나중에 이름 바꿀것
+        tmp = findViewById(R.id.temp_id); // todo: 나중에 이름 바꿀것
 
         //뒤로가기
         btn_back.setOnClickListener(new View.OnClickListener() {

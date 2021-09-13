@@ -56,12 +56,11 @@
                     android:text="이름"
                     android:textStyle="bold"
                     android:textSize="20sp" />
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="center"
-                    android:text="김민태"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -80,13 +79,12 @@
                     android:text="지역"
                     android:textStyle="bold"
                     android:textSize="20sp" />
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="center"
-                    android:textSize="20sp"
-                    android:text=" 충북" />
+                    android:textSize="20sp"/>
             </TableRow>
 
             <TableRow
@@ -104,12 +102,11 @@
                     android:text="연락처"
                     android:textStyle="bold"
                     android:textSize="20sp" />
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
-                    android:gravity="center"
-                    android:text=" 010-5610-7353" />
+                    android:gravity="center" />
             </TableRow>
 
             <TableRow
@@ -127,14 +124,13 @@
                     android:text="자격"
                     android:textStyle="bold"
                     android:textSize="20sp" />
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
-                    android:layout_height="25dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:gravity="center"
                     android:textSize="20sp"
-                    android:textColor="@color/volunteer"
-                    android:text="사회복지사2급" />
+                    android:textColor="@color/volunteer" />
             </TableRow>
 
             <TableRow
@@ -161,52 +157,45 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <CheckBox
                         android:id="@+id/tv_info_field_disable"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="장애"
-                        android:textColor="@color/volunteer" />
+                        android:text="장애"/>
 
-                    <TextView
+                    <CheckBox
                         android:id="@+id/tv_info_field_old"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="노인"
-                        android:textColor="@color/disable" />
+                        android:text="노인"/>
 
-                    <TextView
+                    <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="아동"
-                        android:textColor="@color/disable" />
+                        android:text="아동" />
 
-                    <TextView
+                    <CheckBox
                         android:id="@+id/tv_info_field_family"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="가족"
-                        android:textColor="@color/disable" />
+                        android:text="가족"/>
 
-                    <TextView
+                    <CheckBox
                         android:id="@+id/tv_info_field_medical"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="의료"
-                        android:textColor="@color/volunteer" />
-
+                        android:text="의료" />
                 </LinearLayout>
-
             </TableRow>
         </TableLayout>
 
@@ -216,14 +205,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:textSize="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="410dp"
             android:layout_height="250dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/square_welfare_invisible"
-            android:text="2012년부터 자격 취득 후 서울 노원복지센터 4년 경기 행복요양원 5년차 근무중인 복지사입니다.
-                            미술 치료, 스포츠 마사지사 자격 보유 했으며 언제든 연락주세요" />
+            android:textSize="20dp" />
 
     </LinearLayout>
 

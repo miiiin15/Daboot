@@ -41,7 +41,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="10dp"
         android:textColor="#aaaaaa"
         android:text="4~20자리의 영문과 숫자"/>
@@ -58,7 +57,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="10dp"
         android:textColor="#aaaaaa"
         android:text="4~20자리의 영문과 숫자"/>
@@ -73,7 +71,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="10dp"
         android:textColor="#aaaaaa"
         android:text="4~20자리의 영문과 숫자"/>
@@ -90,7 +87,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="10dp"
         android:textColor="#aaaaaa"
         android:text="2~6자의 한글 이름"/>
@@ -104,10 +100,66 @@
         android:textAlignment="center"
         android:hint="이메일을 입력하세요."/>
 
+    <EditText
+        android:id="@+id/edt_join_Area"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:hint="지역을 입력해주세요."
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_join_Area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:visibility="gone"
+        android:text="ex)서울, 제주, 충북, 경기" />
+
+    <EditText
+        android:id="@+id/edt_join_Qualification"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:hint="자격증 정보를 입력해주세요."
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_join_Qualification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:visibility="gone"
+        android:text="ex)사회복지사 1급, 보육교사 2급, 정신보건사 2급" />
+
+    <EditText
+        android:id="@+id/edt_join_Field"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:hint="분야를 입력해주세요"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_join_Field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:textColor="#aaaaaa"
+        android:visibility="gone"
+        android:text="ex)장애, 노인, 아동, 가족, 의료" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingBottom="10dp"
         android:textSize="10dp"/>
 
     <LinearLayout
@@ -137,14 +189,28 @@
 
 
 
-    <Button
-        android:id="@+id/btn_join_Submit"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/enable"
-        android:textColor="#F8FAFF"
-        android:textSize="20dp"
-        android:text="가 입 신 청" />
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_join_Submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/enable"
+            android:textColor="#F8FAFF"
+            android:textSize="20dp"
+            android:text="가 입 신 청" />
+        <Button
+            android:id="@+id/btn_welfare_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/enable"
+            android:textColor="#F8FAFF"
+            android:textSize="20dp"
+            android:text="복지사 회원가입" />
+    </LinearLayout>
 
 </LinearLayout>

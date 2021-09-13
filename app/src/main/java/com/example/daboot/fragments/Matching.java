@@ -1,5 +1,6 @@
 package com.example.daboot.fragments;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,6 +36,7 @@ public class Matching extends Fragment {
     String sex = "";
     String first = "";
     String name = "";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,7 +62,13 @@ public class Matching extends Fragment {
         final CheckBox cb12 = view.findViewById(R.id.chk_box12);
         final CheckBox cb13 = view.findViewById(R.id.chk_box13);
         final CheckBox cb14 = view.findViewById(R.id.chk_box14);
+        /* 위치 관련
 
+        */
+        
+
+
+        // 스피너
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getContext(), android.R.layout.simple_spinner_item, items);
         // 드롭다운 클릭시 선택창
@@ -133,7 +141,9 @@ public class Matching extends Fragment {
             }
         });
 
+
         return view;
+
 
     }
 }
