@@ -1,216 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/tv_join_title"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="회 원 가 입"
         android:textAlignment="center"
         android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        android:layout_marginBottom="10dp"/>
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_title">
+
         <EditText
             android:id="@+id/edt_join_ID"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:hint="아이디를 입력하세요."
             android:inputType="text"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:hint="아이디를 입력하세요."/>
+            android:textSize="20dp" />
 
         <Button
             android:id="@+id/btn_Check_ID"
             android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:backgroundTint="@color/enable"
             android:text="중복 확인"
             android:textColor="#F8FAFF"
-            android:backgroundTint="@color/enable"
-            android:textSize="8dp"/>
-
-
+            android:textSize="8dp" />
     </LinearLayout>
+
     <TextView
+        android:id="@+id/tv_join_id_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:text="4~20자리의 영문과 숫자"
         android:textColor="#aaaaaa"
-        android:text="4~20자리의 영문과 숫자"/>
-    
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/edt_join_pwd"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:hint="비밀번호를 입력하세요."/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_id_comment" />
+
     <TextView
+        android:id="@+id/tv_join_pwd_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:text="4~20자리의 영문과 숫자"
         android:textColor="#aaaaaa"
-        android:text="4~20자리의 영문과 숫자"/>
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_join_pwd" />
+
     <EditText
         android:id="@+id/edt_join_pwdCheck"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:hint="비밀번호 확인."
         android:inputType="textPassword"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:hint="비밀번호 확인."/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_pwd_comment" />
+
     <TextView
+        android:id="@+id/tv_join_repwd_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10dp"
+        android:text="4~20자리의 영문과 숫자"
         android:textColor="#aaaaaa"
-        android:text="4~20자리의 영문과 숫자"/>
-
-    <EditText
-        android:id="@+id/edt_join_Name"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:hint="이름을 입력하세요."/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:textSize="10dp"
-        android:textColor="#aaaaaa"
-        android:text="2~6자의 한글 이름"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_join_pwdCheck" />
 
-    <EditText
-        android:id="@+id/edt_join_Email"
-        android:layout_width="300dp"
+
+    <Button
+        android:id="@+id/btn_join_Submit"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/enable"
+        android:text="추 가 정 보"
+        android:textColor="#F8FAFF"
         android:textSize="20dp"
-        android:textAlignment="center"
-        android:hint="이메일을 입력하세요."/>
-
-    <EditText
-        android:id="@+id/edt_join_Area"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:hint="지역을 입력해주세요."
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/tv_join_Area"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:textColor="#aaaaaa"
-        android:visibility="gone"
-        android:text="ex)서울, 제주, 충북, 경기" />
-
-    <EditText
-        android:id="@+id/edt_join_Qualification"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:hint="자격증 정보를 입력해주세요."
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/tv_join_Qualification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:textColor="#aaaaaa"
-        android:visibility="gone"
-        android:text="ex)사회복지사 1급, 보육교사 2급, 정신보건사 2급" />
-
-    <EditText
-        android:id="@+id/edt_join_Field"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="20dp"
-        android:textAlignment="center"
-        android:hint="분야를 입력해주세요"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/tv_join_Field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"
-        android:textColor="#aaaaaa"
-        android:visibility="gone"
-        android:text="ex)장애, 노인, 아동, 가족, 의료" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/edt_join_Identity"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp"
-            android:hint="증명사진 첨부."/>
-
-        <Button
-            android:id="@+id/btn_join_Identity"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:backgroundTint="@color/enable"
-            android:text="찾기"
-            android:textColor="#F8FAFF"
-            android:textSize="8.5dp"/>
-
-
-    </LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_repwd_comment" />
 
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_join_Submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/enable"
-            android:textColor="#F8FAFF"
-            android:textSize="20dp"
-            android:text="가 입 신 청" />
-        <Button
-            android:id="@+id/btn_welfare_mode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:backgroundTint="@color/enable"
-            android:textColor="#F8FAFF"
-            android:textSize="20dp"
-            android:text="복지사 회원가입" />
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

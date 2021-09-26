@@ -43,6 +43,7 @@ dependencies {
 
     implementation 'com.google.firebase:firebase-database:19.2.1' //파이어베이스 인증 관련
     implementation 'com.google.firebase:firebase-auth:21.0.1'//파이어베이스
+    implementation 'com.google.firebase:firebase-firestore:23.0.3' //파이어베이스 회원 정보 관련
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
