@@ -2,6 +2,9 @@ package com.example.daboot;
 
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -17,6 +20,8 @@ public class WelfareInfoDone extends AppCompatActivity {
     Button btn_done;
     CheckBox chk_disorder, chk_old, chk_child, chk_family, chk_medical;
     String field;
+    private WebView mWebView; // 웹뷰 선언
+    private WebSettings mWebSettings; //웹뷰세팅
 
     @Override // @Nullable
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +30,30 @@ public class WelfareInfoDone extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide(); // 상단바 제거
 
-        Welfare_Name = (EditText)findViewById(R.id.welfare_name);
-        Welfare_Area = (EditText)findViewById(R.id.welfare_area);
-        Welfare_Phone = (EditText)findViewById(R.id.welfare_phone);
-        Welfare_Qualification = (EditText)findViewById(R.id.welfare_Qualification);
-        btn_done = (Button)findViewById(R.id.info_done);
-        chk_disorder = (CheckBox)findViewById(R.id.chk_disorder);
-        chk_old = (CheckBox)findViewById(R.id.chk_old);
-        chk_child = (CheckBox)findViewById(R.id.chk_child);
-        chk_family = (CheckBox)findViewById(R.id.chk_family);
-        chk_medical = (CheckBox)findViewById(R.id.chk_medical);
+        WebSettings mWebSettings; //웹뷰세팅
+        mWebView = (WebView) findViewById(R.id.webView);
+        mWebView.setWebViewClient(new WebViewClient());
+        mWebSettings = mWebView.getSettings();
+        mWebSettings.setJavaScriptEnabled(true);
+        mWebSettings.setLoadWithOverviewMode(true);
+        mWebSettings.setUseWideViewPort(true);
+        mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        mWebSettings.setDomStorageEnabled(true);
+        mWebSettings.setGeolocationEnabled(true);
+
+        /*
+            Welfare_Name = (EditText)findViewById(R.id.welfare_name);
+            Welfare_Area = (EditText)findViewById(R.id.welfare_area);
+            Welfare_Phone = (EditText)findViewById(R.id.welfare_phone);
+            Welfare_Qualification = (EditText)findViewById(R.id.welfare_Qualification);
+            btn_done = (Button)findViewById(R.id.info_done);
+            chk_disorder = (CheckBox)findViewById(R.id.chk_disorder);
+            chk_old = (CheckBox)findViewById(R.id.chk_old);
+            chk_child = (CheckBox)findViewById(R.id.chk_child);
+            chk_family = (CheckBox)findViewById(R.id.chk_family);
+            chk_medical = (CheckBox)findViewById(R.id.chk_medical);
+         */
 
 
         btn_done.setOnClickListener(new View.OnClickListener() {
