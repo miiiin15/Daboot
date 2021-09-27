@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_join_info_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="추 가 정 보 입 력"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_join_info_welfare_mode"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:backgroundTint="@color/enable"
+        android:text="복지사입니다"
+        android:textColor="#F8FAFF"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_join_info_Name"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="이름을 입력하세요."
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_info_title" />
+
+    <TextView
+        android:id="@+id/tv_join_info_name_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2~6자의 한글 이름"
+        android:textColor="#aaaaaa"
+        android:textSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_join_info_Name" />
+
+    <EditText
+        android:id="@+id/edt_join_info_Email"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="이메일을 입력하세요."
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_info_name_comment" />
+
+    <LinearLayout
+        android:id="@+id/join_info_welfare_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_join_info_Email">
+
+        <EditText
+            android:id="@+id/edt_join_info_Area"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="지역을 입력해주세요."
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ex)서울, 제주, 충북, 경기"
+            android:textColor="#aaaaaa"
+            android:textSize="10dp" />
+
+        <EditText
+            android:id="@+id/edt_join_info_Qualification"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="자격증 정보를 입력해주세요."
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ex)사회복지사 1급, 보육교사 2급, 정신보건사 2급"
+            android:textColor="#aaaaaa"
+            android:textSize="10dp" />
+
+        <EditText
+            android:id="@+id/edt_join_info_Field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="분야를 입력해주세요"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ex)장애, 노인, 아동, 가족, 의료"
+            android:textColor="#aaaaaa"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_info_welfare_form">
+
+        <EditText
+            android:id="@+id/edt_join_info_Identity"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:hint="증명사진 첨부."
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/btn_join_info_Identity"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/enable"
+            android:text="찾기"
+            android:textColor="#F8FAFF"
+            android:textSize="8.5dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_join_info_Submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:backgroundTint="@color/enable"
+        android:text="가 입 신 청"
+        android:textColor="#F8FAFF"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

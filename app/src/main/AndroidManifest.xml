@@ -28,6 +28,7 @@
         </activity>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>
+        <activity android:name=".Login.JoinInfo"/>
         <activity android:name=".Intro"/>
         <activity android:name=".Board.Write"/>
         <activity android:name=".Board.Contents"/>
