@@ -181,7 +181,7 @@ public class Board extends Fragment {
                         if (task.isSuccessful()) {
                             DocumentSnapshot document = task.getResult();
                             if (document.exists()) {
-                                Toast.makeText(getContext(), "환영합니다. "+document.get("name") + " / " + document.get("qual") + " 자격의 사용자입니다.",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), document.get("name") + " / " + document.get("qual") + " 자격의 사용자입니다.",Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getContext(), "데이터가 없습니다.",Toast.LENGTH_SHORT).show();
                             }
