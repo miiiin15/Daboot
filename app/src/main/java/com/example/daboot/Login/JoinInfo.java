@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class JoinInfo extends AppCompatActivity {
 
     private Button  btn_welfare_form,btn_identity, btn_submit;
-    private EditText edt_Area,edt_Name, edt_Email, edt_Qualification, edt_Field;
+    private EditText edt_Area,edt_Name, edt_Email, edt_Field;
     private LinearLayout welfare_form;
 
     private boolean form = true;
@@ -44,7 +44,6 @@ public class JoinInfo extends AppCompatActivity {
         edt_Email = findViewById(R.id.edt_join_info_Email);
         edt_Area = findViewById(R.id.edt_join_info_Area);
         edt_Field = findViewById(R.id.edt_join_info_Field);
-        edt_Qualification = findViewById(R.id.edt_join_info_Qualification);
 
         btn_welfare_form = findViewById(R.id.btn_join_info_welfare_mode);
         btn_identity = findViewById(R.id.btn_join_info_Identity);
@@ -75,15 +74,17 @@ public class JoinInfo extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //todo : "form" [복지사입니다]버튼의 여부에 따라 지역, 분야 등 값들 기본값으로 넣을지 회원 정보 구조를 개편할것인지 결정 할 것
                 String name = edt_Name.getText().toString();
                 String email = edt_Email.getText().toString();
                 String area = edt_Area.getText().toString();
                 String field = edt_Field.getText().toString();
-                String qual = edt_Qualification.getText().toString();
+                String qual = form ? "nomal" : "volunteer"; // [복지사입니다] 버튼으로 바뀌는 boolean타입의 form변수 값에 따라 nomal(일반 사용자) | volunteer(복지사)가 DB에 들어가게 됨
+                String contents = "Test Contents";
 
                 if(name.length()>0 && email.length()>0 && area.length()>0 && field.length()>0 && qual.length()>0){
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    MemberInfo memberInfo = new MemberInfo(name,email,area,field,qual);
+                    MemberInfo memberInfo = new MemberInfo(name,email,area,field,qual,contents);
                     db.collection("UserInfo").document(user.getUid()).set(memberInfo)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

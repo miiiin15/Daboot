@@ -1,14 +1,21 @@
 package com.example.daboot.Login;
 
 public class MemberInfo {
-   private String name, email, area, field, qual;
 
-    public MemberInfo(String name, String email, String area, String field, String qual) {
+    private String name;
+    private String email;
+    private String area;
+    private String field;
+    private String qual;
+    private String contents;
+
+    public MemberInfo(String name, String email, String area, String field, String qual, String contents) {
         this.name = name;
         this.email = email;
         this.area = area;
         this.field = field;
         this.qual = qual;
+        this.contents = contents;
     }
 
     public String getName() {
@@ -49,5 +56,13 @@ public class MemberInfo {
 
     public void setQual(String qual) {
         this.qual = qual;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 }
