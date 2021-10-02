@@ -100,16 +100,14 @@ public class Matching extends Fragment {
                     String eq = new String("nomal");
 
                     if (eq.equals(document.get("qual"))) {
-                        Toast.makeText(getContext(),document.get("qual")+ " 일반회원 ",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),document.get("qual")+ " 회원 ",Toast.LENGTH_SHORT).show();
                     } else {
                         Intent intent = new Intent(getContext(), WelfareInfoDone.class);
                         startActivity(intent);
                         getActivity().finish();
                     }
                     if (document.exists()) {
-                        Toast.makeText(getContext(),document.get("qual")+ " 일반회원 ",Toast.LENGTH_SHORT).show();
-                        // Toast.makeText(getContext(), document.get("qual") + " 일반회원 ",Toast.LENGTH_SHORT).show();
-                        // document에 docRef로 연결된 파이어스토어 조회결과 넣어놓음 sql로 치면 ( select name, qual form UserInfo )랑 비슷 get(ㅁㅁㅁ) ㅁㅁㅁ에 조회할 속성 적으면 됨
+                        Toast.makeText(getContext(),document.get("qual")+ " 회원 ",Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getContext(), "정보입력 화면으로 이동합니다.",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getContext(), JoinInfo.class);
