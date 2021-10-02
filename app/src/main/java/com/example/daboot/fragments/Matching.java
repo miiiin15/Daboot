@@ -15,11 +15,23 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.daboot.Login.JoinInfo;
+import com.example.daboot.Login.Login;
 import com.example.daboot.MatchingList;
 import com.example.daboot.R;
 import com.example.daboot.WelfareInfoDone;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Matching extends Fragment {
 
@@ -27,15 +39,21 @@ public class Matching extends Fragment {
     TextView textView;
     ImageButton imageButton;
     ImageButton imageInfoWrite;
-    /*
-        분야, 지역, 경력, 성별, 우선도, 복지사 이름
-    */
+
+    // 분야, 지역, 경력, 성별, 우선도, 복지사 이름
     String field = "";
     String area = "";
     String career = "";
     String sex = "";
     String first = "";
     String name = "";
+
+    // 파이어베이스 연동
+    private FirebaseDatabase database;
+    private FirebaseFirestore db;
+    private FirebaseUser user;
+    private DocumentReference docRef;
+    private DatabaseReference databaseReference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +63,6 @@ public class Matching extends Fragment {
         textView = view.findViewById(R.id.textView);
         Spinner spinner = view.findViewById(R.id.spinner);
         imageButton = view.findViewById(R.id.img_search);
-        imageInfoWrite = view.findViewById(R.id.img_info_write);
         EditText edt_name = view.findViewById(R.id.edt_name);
 
         final CheckBox cb1 = view.findViewById(R.id.chk_box1);
@@ -62,11 +79,48 @@ public class Matching extends Fragment {
         final CheckBox cb12 = view.findViewById(R.id.chk_box12);
         final CheckBox cb13 = view.findViewById(R.id.chk_box13);
         final CheckBox cb14 = view.findViewById(R.id.chk_box14);
-        /* 위치 관련
 
-        */
-        
+        // 현재 로그인 한 유저
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        // 리얼타임데이터베이스 연동
+        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app");
+        //리얼타일데이터베이스 Board 테이블 연결
+        databaseReference = database.getReference("Board");
+        //파이어스토어 연동
+        db = FirebaseFirestore.getInstance();
+        // 파이어스토어 UserInfo 테이블 연결
+        docRef = db.collection("UserInfo").document(user.getUid());
 
+        //화면이 로딩되자마자 파이어스토어에 현재 로그인한 유저 정보를 조회해서 있으면 toast로 띄워주고 없으면 정보 입력화면으로 이동
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    String eq = new String("nomal");
+
+                    if (eq.equals(document.get("qual"))) {
+                        Toast.makeText(getContext(),document.get("qual")+ " 일반회원 ",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Intent intent = new Intent(getContext(), WelfareInfoDone.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                    if (document.exists()) {
+                        Toast.makeText(getContext(),document.get("qual")+ " 일반회원 ",Toast.LENGTH_SHORT).show();
+                        // Toast.makeText(getContext(), document.get("qual") + " 일반회원 ",Toast.LENGTH_SHORT).show();
+                        // document에 docRef로 연결된 파이어스토어 조회결과 넣어놓음 sql로 치면 ( select name, qual form UserInfo )랑 비슷 get(ㅁㅁㅁ) ㅁㅁㅁ에 조회할 속성 적으면 됨
+                    } else {
+                        Toast.makeText(getContext(), "정보입력 화면으로 이동합니다.",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), JoinInfo.class);
+                        startActivity(intent);
+                        getActivity().finish();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "실패",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         // 스피너
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
@@ -81,7 +135,7 @@ public class Matching extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 area = items[position];
-                Toast.makeText(getContext(), items[position] + "지역을 선택하셨습니다.", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), items[position] + "지역을 선택하셨습니다.", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -133,17 +187,7 @@ public class Matching extends Fragment {
             }
         });
 
-        imageInfoWrite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), WelfareInfoDone.class);
-                startActivity(intent);
-            }
-        });
-
-
         return view;
-
 
     }
 }

@@ -64,81 +64,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_join_info_name_comment" />
 
-    <LinearLayout
-        android:id="@+id/join_info_welfare_form"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_join_info_Email">
-
-        <EditText
-            android:id="@+id/edt_join_info_Area"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="지역을 입력해주세요."
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ex)서울, 제주, 충북, 경기"
-            android:textColor="#aaaaaa"
-            android:textSize="10dp" />
-
-        <EditText
-            android:id="@+id/edt_join_info_Qualification"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="자격증 정보를 입력해주세요."
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ex)사회복지사 1급, 보육교사 2급, 정신보건사 2급"
-            android:textColor="#aaaaaa"
-            android:textSize="10dp" />
-
-        <EditText
-            android:id="@+id/edt_join_info_Field"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="분야를 입력해주세요"
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ex)장애, 노인, 아동, 가족, 의료"
-            android:textColor="#aaaaaa"
-            android:textSize="10dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_info_welfare_form">
+        app:layout_constraintTop_toBottomOf="@+id/edt_join_info_Email">
 
         <EditText
             android:id="@+id/edt_join_info_Identity"
@@ -170,7 +105,58 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/join_info_welfare_form" />
+
+    <LinearLayout
+        android:id="@+id/join_info_welfare_form"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <EditText
+            android:id="@+id/edt_join_info_Area"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="지역을 입력해주세요."
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ex)서울, 제주, 충북, 경기"
+            android:textColor="#aaaaaa"
+            android:textSize="10dp" />
+
+        <EditText
+            android:id="@+id/edt_join_info_Field"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="분야를 입력해주세요"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ex)장애, 노인, 아동, 가족, 의료"
+            android:textColor="#aaaaaa"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
