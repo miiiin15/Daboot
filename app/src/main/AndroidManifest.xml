@@ -23,9 +23,8 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".ChatActivity">
-
-        </activity>
+        <activity android:name=".Message.ChatActivity"/>
+        <activity android:name=".Message.ChatList"/>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>
         <activity android:name=".Login.JoinInfo"/>

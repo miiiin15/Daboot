@@ -1,10 +1,13 @@
-package com.example.daboot;
+package com.example.daboot.Message;
 
-import java.io.Serializable;
+
+import android.util.Log;
 
 public class ChatData {
     private String msg;
     private String nick;
+    private String time;
+
 
     public String getMsg() {
         return msg;
@@ -20,5 +23,13 @@ public class ChatData {
 
     public void setNick(String nick) {
         this.nick = nick;
+    }
+
+    public String getTime(){
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
