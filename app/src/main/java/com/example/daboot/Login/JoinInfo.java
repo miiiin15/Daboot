@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,11 +37,12 @@ public class JoinInfo extends AppCompatActivity {
     private Button [] field_btn = new Button[5];
 
     private Button  btn_welfare_form,btn_identity, btn_submit;
+    private Switch btn_sex;
     private TextView tv_field;
     private EditText edt_Name, edt_Email;
     private LinearLayout field_form;
 
-    private String name, email, area, qual, field="none", contents = "Test Contents";
+    private String name, sex = "남성", email, area, qual, field="none", contents = "Test Contents";
     private boolean form = true;
 
     @Override
@@ -61,8 +64,23 @@ public class JoinInfo extends AppCompatActivity {
         btn_welfare_form = findViewById(R.id.btn_join_info_welfare_mode);
         btn_identity = findViewById(R.id.btn_join_info_Identity);
         btn_submit = findViewById(R.id.btn_join_info_Submit);
+        btn_sex = findViewById(R.id.btn_join_info_sex);
 
         field_form = findViewById(R.id.btns_join_info_feild_form);
+
+        btn_sex.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    btn_sex.setText("여성");
+                    sex = "여성";
+                }
+                else{
+                    btn_sex.setText("남성");
+                    sex = "남성";
+                }
+            }
+        });
 
         btn_welfare_form.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +146,7 @@ public class JoinInfo extends AppCompatActivity {
 
                 if(name.length()>0 && email.length()>0 && area.length()>0 && field.length()>0 && qual.length()>0 && !(form==false&&field=="none")){
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    MemberInfo memberInfo = new MemberInfo(name,email,area,field,qual,contents);
+                    MemberInfo memberInfo = new MemberInfo(name,sex,email,area,field,qual,contents);
                     db.collection("UserInfo").document(user.getUid()).set(memberInfo)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

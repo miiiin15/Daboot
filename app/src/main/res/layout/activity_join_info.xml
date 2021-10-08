@@ -31,9 +31,10 @@
 
     <EditText
         android:id="@+id/edt_join_info_Name"
-        android:layout_width="300dp"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="75dp"
         android:hint="이름을 입력하세요."
         android:inputType="text"
         android:textAlignment="center"
@@ -301,7 +302,16 @@
 
     </LinearLayout>
 
-
+    <Switch
+        android:id="@+id/btn_join_info_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="남성"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:track="@drawable/switch_info_track_selector"
+        app:layout_constraintBottom_toTopOf="@+id/tv_join_info_name_comment"
+        app:layout_constraintStart_toEndOf="@+id/edt_join_info_Name"
+        app:layout_constraintTop_toTopOf="@+id/edt_join_info_Name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
