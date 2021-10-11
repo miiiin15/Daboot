@@ -69,16 +69,10 @@ public class Matching extends Fragment {
         final CheckBox cb2 = view.findViewById(R.id.chk_box2);
         final CheckBox cb3 = view.findViewById(R.id.chk_box3);
         final CheckBox cb4 = view.findViewById(R.id.chk_box4);
-        final CheckBox cb5 = view.findViewById(R.id.chk_box5);
-        final CheckBox cb6 = view.findViewById(R.id.chk_box6);
-        final CheckBox cb7 = view.findViewById(R.id.chk_box7);
-        final CheckBox cb8 = view.findViewById(R.id.chk_box8);
         final CheckBox cb9 = view.findViewById(R.id.chk_box9);
         final CheckBox cb10 = view.findViewById(R.id.chk_box10);
         final CheckBox cb11 = view.findViewById(R.id.chk_box11);
-        final CheckBox cb12 = view.findViewById(R.id.chk_box12);
-        final CheckBox cb13 = view.findViewById(R.id.chk_box13);
-        final CheckBox cb14 = view.findViewById(R.id.chk_box14);
+
 
         // 현재 로그인 한 유저
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -127,7 +121,6 @@ public class Matching extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // 스피너에 어댑터 설정
         spinner.setAdapter(adapter);
-
         // 스니퍼 이벤트 처리
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -141,44 +134,31 @@ public class Matching extends Fragment {
             }
         });
 
-        /*
-            버튼 체크 및 체크된 버튼의 값을 담아 MatchingList.class 값 넘겨준다.
-        */
+        //버튼 체크 및 체크된 버튼의 값을 담아 MatchingList.class 값 넘겨준다.
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(cb1.isChecked()) field = "노인";
                 if(cb2.isChecked()) field = "아동";
                 if(cb3.isChecked()) field = "가족";
                 if(cb4.isChecked()) field = "의료";
 
-                if(cb5.isChecked()) career = "경력없음";
-                if(cb6.isChecked()) career = "1년이상";
-                if(cb7.isChecked()) career = "5년이상";
-                if(cb8.isChecked()) career = "10년이상";
-
                 if(cb9.isChecked()) sex = "무관";
                 if(cb10.isChecked()) sex = "남자";
                 if(cb11.isChecked()) sex = "여자";
 
-                if(cb12.isChecked()) first = "무관";
-                if(cb13.isChecked()) first = "거리";
-                if(cb14.isChecked()) first = "경력";
-
                 Intent intent = new Intent(getContext(), MatchingList.class);
                 intent.putExtra("field", field);
                 intent.putExtra("area", area);
-                intent.putExtra("career", career);
                 intent.putExtra("sex", sex);
                 intent.putExtra("first", first);
-                /*
-                 복지사 이름 공백체크
-                */
-                name = edt_name.getText().toString();
-                if(edt_name.length() == 0) {
-                    Toast.makeText(getContext(), "값을 모두 입력해주세요", Toast.LENGTH_LONG).show();
+
+                if(edt_name.length() > 0) {
+                    name = edt_name.getText().toString();
+                    intent.putExtra("name", name);
                 } else {
-                    intent.putExtra("name", edt_name.getText().toString());
+                    intent.putExtra("name", name);
                 }
 
                 startActivity(intent);

@@ -67,7 +67,7 @@ public class WelfareInfoDone extends AppCompatActivity {
         // 파이어스토어 UserInfo 테이블 연결
         docRef = db.collection("UserInfo").document(user.getUid());
 
-        // 복지사 자기소개 화면에서 자기소개 내용을 긁어온다. 계속 수정 할 수 있다.
+        // 복지사 자기소개 화면에서 자기소개 내용을 긁어온다.
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -81,7 +81,7 @@ public class WelfareInfoDone extends AppCompatActivity {
                         quall = document.get("qual").toString();
                         field = document.get("field").toString();
                     } else {
-                        /* 정보가 없는 로직 */
+                        /* 정보가 없음 */
                     }
                 } else {
                     Toast.makeText(getApplicationContext(), "실패",Toast.LENGTH_SHORT).show();

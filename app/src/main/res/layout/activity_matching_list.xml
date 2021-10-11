@@ -30,185 +30,22 @@
             android:textSize="35sp" />
 
         <Button
+            android:id="@+id/reload"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             style="?android:attr/borderlessButtonStyle"
             android:backgroundTint="#ffffff"
             app:icon="@drawable/ic_renew"
             app:iconTint="@color/enable" />
-
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:id="@+id/temp_id"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@drawable/square_invisible">
-
-            <!--이름-->
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_marginLeft="20dp"
-                android:text="김민태"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--성별-->
-            <TextView
-                android:id="@+id/sex"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="남자"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--지역-->
-            <TextView
-                android:id="@+id/area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="충북"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--분야-->
-            <TextView
-                android:id="@+id/field"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="    장애, 의료"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--정보보기-->
-            <ImageButton
-                android:id="@+id/imgbtn_message"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="60dp"
-                android:background="#00000000"
-                android:src="@drawable/ic_message" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@drawable/square_invisible">
-
-            <!--이름-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="이선재"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--성별-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="남자"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--지역-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="경기도"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--분야-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="노인, 가족, 의료"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--정보보기-->
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:background="#00000000"
-                android:src="@drawable/ic_message" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:background="@drawable/square_invisible">
-
-            <!--이름-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="김하나"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--성별-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="여자"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--지역-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="전라도"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--분야-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="의료"
-                android:textSize="16sp"
-                android:textColor="#000" />
-
-            <!--정보보기-->
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="99dp"
-                android:background="#00000000"
-                android:src="@drawable/ic_message" />
-        </LinearLayout>
-
-
-    </LinearLayout>
-
-
-
-
-
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#F0F0F0" />
 
 
 
