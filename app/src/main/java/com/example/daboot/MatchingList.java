@@ -11,8 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.daboot.Adapter.MatchingAdapter;
 import com.example.daboot.Login.JoinInfo;
+import com.example.daboot.Login.MemberInfo;
 import com.example.daboot.fragments.Matching;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -43,6 +47,17 @@ public class MatchingList extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        MatchingAdapter adapter = new MatchingAdapter();
+
+        adapter.addItem(new MemberInfo("김태수","남자","서울", "장애"));
+        adapter.addItem(new MemberInfo("이슬비","여자","경기도", "노인"));
+        adapter.addItem(new MemberInfo("배리나","여자","충북", "가족"));
+        adapter.addItem(new MemberInfo("성귀연","여자","전라도", "아동"));
+        recyclerView.setAdapter(adapter);
         // 이름, 성별, 지역, 분야 값 전달받기
         Intent intent = getIntent();
         name = intent.getExtras().getString("name");
@@ -81,15 +96,13 @@ public class MatchingList extends AppCompatActivity {
             }
         });
 
-        //
+
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 // 데이를 가져오는 작업이 작 동작했을 때
                 if (task.isSuccessful()) {
-                    //문서의 데이터를 담을 DocumentSnapshot 에 작업의 결과를 담는다.
                     DocumentSnapshot document = task.getResult();
-
 
                 } else {
                     // 데이터를 가져오는 작업이 에러났을 때

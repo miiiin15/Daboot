@@ -43,6 +43,7 @@ public class WelfareInfoDone extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     private String name;
+    private String sex;
     private String email;
     private String area;
     private String field;
@@ -76,6 +77,7 @@ public class WelfareInfoDone extends AppCompatActivity {
                     if (document.exists()) {
                         edt_introduction.setText(document.get("contents").toString());
                         name = document.get("name").toString();
+                        sex = document.get("sex").toString();
                         email = document.get("email").toString();
                         area = document.get("area").toString();
                         quall = document.get("qual").toString();
@@ -97,7 +99,7 @@ public class WelfareInfoDone extends AppCompatActivity {
 
                 if(name.length()>0 && email.length()>0 && area.length()>0 && field.length()>0){
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    MemberInfo memberInfo = new MemberInfo(name,email,area,field,quall,contents);
+                    MemberInfo memberInfo = new MemberInfo(name,sex,email,area,field,quall,contents);
                     db.collection("UserInfo").document(user.getUid()).set(memberInfo)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

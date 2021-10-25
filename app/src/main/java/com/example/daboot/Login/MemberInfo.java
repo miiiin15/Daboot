@@ -20,6 +20,13 @@ public class MemberInfo {
         this.contents = contents;
     }
 
+    public MemberInfo(String name, String sex, String area, String field) {
+        this.name = name;
+        this.sex = sex;
+        this.area = area;
+        this.field = field;
+    }
+
     public String getName() {
         return name;
     }
