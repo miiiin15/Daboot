@@ -76,10 +76,8 @@ public class MatchingList extends AppCompatActivity {
         // 파이어스토어 UserInfo 테이블 연결
         docRef = db.collection("UserInfo").document(user.getUid());
 
-        btn_back = findViewById(R.id.btn_matching_list_back);
-        btn_reload = findViewById(R.id.reload);
-
         //뒤로가기
+        btn_back = findViewById(R.id.btn_matching_list_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,10 +86,10 @@ public class MatchingList extends AppCompatActivity {
         });
 
         // 값 넘어오는거 체크용
+        btn_reload = findViewById(R.id.reload);
         btn_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(MatchingList.this, "이름:" + name + " 성별:" + sex + " 지역:" + area + " 분야:" + field ,Toast.LENGTH_SHORT).show();
             }
         });
