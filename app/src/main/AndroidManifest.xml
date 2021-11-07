@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.DaBoot">
-        <activity android:name=".Login.Login">
+        <activity android:name=".Message.ChatActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".Message.ChatActivity"/>
+        <activity android:name=".Login.Login"/>
         <activity android:name=".Message.ChatList"/>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>

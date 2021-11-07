@@ -3,6 +3,7 @@ package com.example.daboot;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -14,7 +15,8 @@ import com.example.daboot.Login.Login;
 public class Intro extends AppCompatActivity {
 
     public int counter;
-    TextView tv;
+    //TextView tv;
+    ImageView splash_img;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,10 +27,11 @@ public class Intro extends AppCompatActivity {
         new CountDownTimer(3000, 1000){
             public void onTick(long millisUntilFinished){
 
-                tv = (TextView)findViewById(R.id.tv1);
+                splash_img = (ImageView)findViewById(R.id.splash_img);
+                /*tv = (TextView)findViewById(R.id.tv1);
 
                 tv.setText(String.valueOf(counter+1));
-                counter++;
+                counter++;*/
             }
             public  void onFinish(){
                 Intent intent = new Intent(getApplicationContext(), Login.class);

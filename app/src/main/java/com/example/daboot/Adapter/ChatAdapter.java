@@ -5,28 +5,21 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.daboot.Message.ChatActivity;
 import com.example.daboot.Message.ChatData;
 import com.example.daboot.R;
-
 import org.jetbrains.annotations.NotNull;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
-    private final List<ChatData> mDataset;
-    private final String myNick;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM");
+    private List<ChatData> mDataset;
+    private String myNick;
+    //private final FirebaseUser user;
+    //private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM");
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView TextView_nick;
@@ -40,14 +33,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             TextView_nick = v.findViewById(R.id.TextView_nick);
             TextView_msg = v.findViewById(R.id.TextView_msg);
             TextView_time = v.findViewById(R.id.TextView_time);
-            row_chat_main = v.findViewById(R.id.row_chat_main);
+            row_chat_main =  v.findViewById(R.id.row_chat_main);
             rootView = v;
         }
     }
 
-    public ChatAdapter(List<ChatData> myDataset, ChatActivity context, String myNickname){
-        mDataset = myDataset;
-        this.myNick = myNickname;
+    public ChatAdapter(List<ChatData> myDataset, ChatActivity context, String nick){
+        //현재 여기에 null값이 들어온다...
+        this.mDataset = myDataset;
+        this.myNick = nick;
     }
 
     @NonNull
@@ -62,15 +56,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
         ChatData chat = mDataset.get(position);
-
         holder.TextView_nick.setText(chat.getNick());
         holder.TextView_msg.setText(chat.getMsg());
         holder.TextView_time.setText(chat.getTime());//DTO
 
         //내가 보낸 메세지
-        if(chat.getNick().equals(this.myNick)){
+        if(chat.getNick() != null && chat.getNick().equals(this.myNick)){
             //holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.right_bubble);
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
@@ -84,10 +77,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.row_chat_main.setGravity(Gravity.LEFT);
         }
-        long unixTime = System.currentTimeMillis();
+        /*long unixTime = System.currentTimeMillis();
         Date date = new Date(unixTime);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-        String time = simpleDateFormat.format(date);
+        String time = simpleDateFormat.format(date);*/
     }
 
     @Override

@@ -66,7 +66,7 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
         ImageView profile;
         TextView nick;
         TextView chatContent;
-        TextClock time;
+        TextView time;
 
         public ChatListViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);

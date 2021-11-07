@@ -23,7 +23,7 @@ public class ChatList extends AppCompatActivity {
     private ArrayList<ChatListData> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-
+//아마 지워져야 할 클래스 파일
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

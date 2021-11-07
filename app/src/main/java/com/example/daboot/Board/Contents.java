@@ -54,12 +54,13 @@ public class Contents extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(chatIntent);
+                //작성자 data 생성 가능할 때, 이 부분에 작성자 uid를 넘기는 코드 작성
             }
         });
 
     }
 
-    //채팅 기능 테스트를 위해 더보기 버튼 잠시 주
+    //채팅 기능 테스트를 위해 더보기 버튼 잠시 주석
     /*@Override
     public boolean onCreateOptionsMenu(Menu menu)
     {

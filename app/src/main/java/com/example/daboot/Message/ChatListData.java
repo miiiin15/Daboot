@@ -2,24 +2,26 @@ package com.example.daboot.Message;
 
 public class ChatListData {
 
-    private int profile;
+    private String profile;
     private String nick;
     private String chatContent;
     private String time;
 
-    public ChatListData(int profile, String nick, String chatContent, String time){
+    public ChatListData(){}
+
+    /*public ChatListData(String profile, String nick, String chatContent, String time){
         this.profile = profile;
         this.nick = nick;
         this.chatContent = chatContent;
         this.time = time;
-    }
+    }*/
 
-    public int getProfile()
+    public String getProfile()
     {
         return this.profile;
     }
 
-    public void setProfile(int profile) {
+    public void setProfile(String profile) {
         this.profile = profile;
     }
 
