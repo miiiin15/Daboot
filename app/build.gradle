@@ -39,13 +39,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-<<<<<<< HEAD
 
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0' //이미지 전송을 원할하게 진행시키는 라이브러리
-=======
     implementation "io.grpc:grpc-okhttp:1.32.2" // grpc-okhttp-0 에러 방지
->>>>>>> a95484b339b1f89de9dda7b3dcd5c35e444cadc0
 
     implementation 'com.google.firebase:firebase-database:19.2.1' //파이어베이스 인증 관련
     implementation 'com.google.firebase:firebase-auth:21.0.1'//파이어베이스
