@@ -54,7 +54,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
 
         viewHolder.tv_category.setText(items.get(position).getCategory());
         viewHolder.tv_title.setText(items.get(position).getTitle());
-        viewHolder.tv_comment.setText(items.get(position).getComment());
+        /*viewHolder.tv_comment.setText(items.get(position).getComment());*/
         viewHolder.tv_writetime.setText(items.get(position).getTime());
         //클릭리스너
         viewHolder.setOnItemClickListener(listener);

@@ -2,28 +2,37 @@ package com.example.daboot.Board;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.daboot.Message.ChatActivity;
+import com.example.daboot.Login.JoinInfo;
 import com.example.daboot.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Contents extends AppCompatActivity {
 
+    private String uid;
+
     private Button btn_back;
+    private TextView tv_title, tv_contetnts, tv_time;
     private EditText edt_coments;
     private LinearLayout coments_bar;
-    private Button btn_go_to_chat;
+
+    private FirebaseFirestore db;
+    private DocumentReference docRef;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,15 +41,38 @@ public class Contents extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
-        Intent chatIntent = new Intent(this, ChatActivity.class);
+        uid = getIntent().getStringExtra("uid");
+        db = FirebaseFirestore.getInstance(); //파이어스토어 연동
+        docRef = db.collection("Board").document(uid); // 파이어스토어 테이블 연결
 
         btn_back = findViewById(R.id.btn_board_contents_back);
+
+        tv_title = findViewById(R.id.tv_board_contents_title);
+        tv_time = findViewById(R.id.tv_board_contents_writeTime);
+        tv_contetnts = findViewById(R.id.tv_board_contents);
 
         edt_coments = findViewById(R.id.edt_board_contents_coment);
 
         coments_bar = findViewById(R.id.board_contents_coments_BAR);
 
-        btn_go_to_chat = findViewById(R.id.btn_go_to_chat);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String time = (String) document.get("time");
+                        tv_title.setText(document.get("title")+"");
+                        tv_time.setText(time.substring(11,16));
+                        tv_contetnts.setText(document.get("contents")+"");
+                    } else {
+                        Toast.makeText(getApplicationContext(), "정보입력 화면으로 이동합니다.",Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "실패",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,45 +81,5 @@ public class Contents extends AppCompatActivity {
             }
         });
 
-        btn_go_to_chat.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                startActivity(chatIntent);
-                //작성자 data 생성 가능할 때, 이 부분에 작성자 uid를 넘기는 코드 작성
-            }
-        });
-
     }
-
-    //채팅 기능 테스트를 위해 더보기 버튼 잠시 주석
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-
-        inflater.inflate(R.menu.side_menu, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected (MenuItem item)
-    {
-        Toast toast = Toast.makeText(getApplicationContext(),"", Toast.LENGTH_LONG);
-
-        switch(item.getItemId())
-        {
-            case R.id.send_msg:
-                toast.setText("Select Menu1");
-                break;
-            case R.id.send_rpt:
-                toast.setText("Select Menu2");
-                break;
-        }
-
-        toast.show();
-
-        return super.onOptionsItemSelected(item);
-    }*/
 }

@@ -23,17 +23,6 @@
             app:icon="@drawable/ic_close"
             app:iconTint="@color/enable" />
 
-        <Button
-            android:id="@+id/btn_board_write_All"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            style="?android:attr/borderlessButtonStyle"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/black"
-            android:textAlignment="center"
-            android:textSize="11dp"
-            android:text="전체" />
 
         <Button
             android:id="@+id/btn_board_write_Free"
@@ -73,7 +62,7 @@
 
 
         <Button
-            android:id="@+id/btn_finished_write"
+            android:id="@+id/btn_baord_wrtie_finish"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,6 +77,7 @@
         android:layout_marginLeft="5dp"
         android:orientation="horizontal">
         <Switch
+            android:id="@+id/btn_board_write_anonymous"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:track="@drawable/switch_track_selector"
@@ -96,12 +86,14 @@
             android:textColor="@color/enable"
             android:text="익명"/>
         <EditText
+            android:id="@+id/edt_board_write_title"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:hint="제목을 입력하시오"/>
     </LinearLayout>
     <EditText
+        android:id="@+id/edt_board_write_contents"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_margin="5dp"/>

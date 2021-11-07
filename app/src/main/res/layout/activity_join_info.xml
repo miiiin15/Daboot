@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -30,9 +31,10 @@
 
     <EditText
         android:id="@+id/edt_join_info_Name"
-        android:layout_width="300dp"
+        android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginEnd="75dp"
         android:hint="이름을 입력하세요."
         android:inputType="text"
         android:textAlignment="center"
@@ -94,6 +96,74 @@
             android:textSize="8.5dp" />
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_join_info_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="지 역"
+        android:textSize="23dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Chungnam"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="충남"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_info_area" />
+
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Chungbuk"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="충북"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_join_info_Area_Gangwon"
+        app:layout_constraintStart_toEndOf="@+id/btn_join_info_Area_Chungnam"
+        app:layout_constraintTop_toTopOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Gyeonggi"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="경기"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_join_info_Area_Chungnam"
+        app:layout_constraintStart_toEndOf="@+id/btn_join_info_Area_Seoul"
+        app:layout_constraintTop_toTopOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Gangwon"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:layout_marginEnd="55dp"
+        android:text="강원"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Seoul"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:layout_marginStart="55dp"
+        android:text="서울"
+        android:textSize="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_join_info_Area_Chungnam" />
+
+
     <Button
         android:id="@+id/btn_join_info_Submit"
         android:layout_width="wrap_content"
@@ -105,58 +175,143 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_info_welfare_form" />
+        app:layout_constraintTop_toBottomOf="@+id/btns_join_info_feild_form" />
 
-    <LinearLayout
-        android:id="@+id/join_info_welfare_form"
+    <Button
+        android:id="@+id/btn_join_info_Area_Jeonnam"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="전남"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Jeonbuk"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="전북"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_join_info_Area_Jeju"
+        app:layout_constraintStart_toEndOf="@+id/btn_join_info_Area_Jeonnam"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Gyeongbuk"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:text="경북"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_join_info_Area_Jeonnam"
+        app:layout_constraintStart_toEndOf="@+id/btn_join_info_Area_Gyeongnam"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Jeju"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:layout_marginEnd="55dp"
+        android:text="제주"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <Button
+        android:id="@+id/btn_join_info_Area_Gyeongnam"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/enable"
+        android:layout_marginStart="55dp"
+        android:text="경남"
+        android:textSize="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Chungnam" />
+
+    <TextView
+        android:id="@+id/tv_join_info_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:orientation="vertical"
         android:visibility="gone"
+        android:text="분 야"
+        android:textSize="23dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/btn_join_info_Area_Jeonnam" />
 
-        <EditText
-            android:id="@+id/edt_join_info_Area"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="지역을 입력해주세요."
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+    <LinearLayout
+        android:id="@+id/btns_join_info_feild_form"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_join_info_field">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ex)서울, 제주, 충북, 경기"
-            android:textColor="#aaaaaa"
-            android:textSize="10dp" />
+        <Button
+            android:id="@+id/btn_join_info_field_disable"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="6dp"
+            android:backgroundTint="@color/volunteer"
+            android:text="장애"
+            android:textSize="8dp" />
 
-        <EditText
-            android:id="@+id/edt_join_info_Field"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="분야를 입력해주세요"
-            android:inputType="text"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+        <Button
+            android:id="@+id/btn_join_info_field_old"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="6dp"
+            android:backgroundTint="@color/volunteer"
+            android:text="노인"
+            android:textSize="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ex)장애, 노인, 아동, 가족, 의료"
-            android:textColor="#aaaaaa"
-            android:textSize="10dp" />
+        <Button
+            android:id="@+id/btn_join_info_field_child"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="6dp"
+            android:backgroundTint="@color/volunteer"
+            android:text="아동"
+            android:textSize="8dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp" />
+        <Button
+            android:id="@+id/btn_join_info_field_family"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="6dp"
+            android:backgroundTint="@color/volunteer"
+            android:text="가족"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/btn_join_info_field_medical"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="6dp"
+            android:backgroundTint="@color/volunteer"
+            android:text="의료"
+            android:textSize="8dp" />
+
 
     </LinearLayout>
+
+    <Switch
+        android:id="@+id/btn_join_info_sex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="남성"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:track="@drawable/switch_info_track_selector"
+        app:layout_constraintBottom_toTopOf="@+id/tv_join_info_name_comment"
+        app:layout_constraintStart_toEndOf="@+id/edt_join_info_Name"
+        app:layout_constraintTop_toTopOf="@+id/edt_join_info_Name" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

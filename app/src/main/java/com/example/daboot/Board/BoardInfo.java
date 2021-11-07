@@ -1,8 +1,7 @@
 package com.example.daboot.Board;
 
-public class BoardItem {
+public class BoardInfo {
 
-    private String uid;
     private String category;
     private String anonymous;
     private String title;
@@ -10,7 +9,7 @@ public class BoardItem {
     private String contents;
     private String time;
 
-    public BoardItem(String category, String anonymous, String title, String writer, String contents, String time) {
+    public BoardInfo(String category, String anonymous, String title, String writer, String contents, String time) {
         this.category = category;
         this.anonymous = anonymous;
         this.title = title;
@@ -19,23 +18,8 @@ public class BoardItem {
         this.time = time;
     }
 
-    public BoardItem(String uid, String category, String title, String time) {
-        this.uid = uid;
-        this.category = category;
-        this.title = title;
-        this.time = time;
-    }
-
     public String getCategory() {
         return category;
-    }
-
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
     }
 
     public void setCategory(String category) {

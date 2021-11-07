@@ -38,6 +38,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -45,7 +47,7 @@ public class Board extends Fragment {
 
 
     private Integer [] btn_id = {R.id.btn_board_All,R.id.btn_board_Free,R.id.btn_board_Question,R.id.btn_board_Market}; //카테고리 버튼 "정보" 제외 4개의 아이디 값을 넣은 배열
-    private String [] keyword = {"All","Free","Question","Market"}; // 4가지의 카테고리(전체, 자유, 질문, 장터)
+    private String [] keyword = {"전체","자유","질문","장터"}; // 4가지의 카테고리(전체, 자유, 질문, 장터)
     private Button [] category_btn = new Button[4]; //카테고리(전체,자유,장터 등..)를 담을 버튼 배열
 
     private LinearLayout bar_catagory, bar_filter, btns_select_option; // 상단바 카테고리(기본), 필터, 필터 옵션
@@ -122,23 +124,26 @@ public class Board extends Fragment {
             }
         });
 
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //파이어베이스 DB데이터 받아오는 함수
-                arrayList.clear();
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){ //데이터 리스트 추출
-                    BoardItem boardItem = snapshot.getValue(BoardItem.class); // 만든 객체에 데이터 담음
-                    arrayList.add(boardItem); //담은 데이터를 배열리스트에 넣고 뷰에 보낼 준비
-                }
-                boardAdapter.notifyDataSetChanged(); // 리스트저장, 새로고침
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("MainActivity", String.valueOf(databaseError.toException())); //DB 가져오다 에러 날 때
-            }
-        });
+        db.collection("Board")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                String time = (String) document.get("time");
+                                Log.d("가져온 값 !", document.getId() + " => " + document.getData());
+                                BoardItem boardItem = new BoardItem(document.getId(),document.get("category")+"",document.get("title")+"",time.substring(11,16));
+                                arrayList.add(boardItem);
+                            }
+                            boardAdapter.notifyDataSetChanged(); // 리스트저장, 새로고침
+                        } else {
+
+                        }
+                    }
+                });
+
 
         boardAdapter = new BoardAdapter(arrayList,getContext());
         view_board.setAdapter(boardAdapter);
@@ -148,9 +153,9 @@ public class Board extends Fragment {
             @Override
             public void onItemClick(BoardAdapter.ViewHolder holder, View view, int position) {
                 BoardItem item = boardAdapter.getItem(position);
-                Toast.makeText(getContext(), " 제목 : " + item.getTitle(), Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getContext(), Contents.class);
+                intent.putExtra("uid",item.getUid());
                 startActivity(intent);
             }
         });

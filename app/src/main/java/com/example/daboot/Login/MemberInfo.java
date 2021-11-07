@@ -3,19 +3,28 @@ package com.example.daboot.Login;
 public class MemberInfo {
 
     private String name;
+    private String sex;
     private String email;
     private String area;
     private String field;
     private String qual;
     private String contents;
 
-    public MemberInfo(String name, String email, String area, String field, String qual, String contents) {
+    public MemberInfo(String name, String sex, String email, String area, String field, String qual, String contents) {
         this.name = name;
+        this.sex = sex;
         this.email = email;
         this.area = area;
         this.field = field;
         this.qual = qual;
         this.contents = contents;
+    }
+
+    public MemberInfo(String name, String sex, String area, String field) {
+        this.name = name;
+        this.sex = sex;
+        this.area = area;
+        this.field = field;
     }
 
     public String getName() {
@@ -64,5 +73,13 @@ public class MemberInfo {
 
     public void setContents(String contents) {
         this.contents = contents;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 }
