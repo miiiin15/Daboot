@@ -2,10 +2,9 @@ package com.example.daboot;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,9 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.daboot.Adapter.MatchingAdapter;
-import com.example.daboot.Login.JoinInfo;
 import com.example.daboot.Login.MemberInfo;
-import com.example.daboot.fragments.Matching;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,13 +22,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
 
 public class MatchingList extends AppCompatActivity {
     // test
     private Button btn_back, btn_reload;
     String name, sex, area, field;
+    private ArrayList<MemberInfo> arrayList;
+    private MatchingAdapter matchingAdapter;
 
     // 파이어베이스 연동
     private FirebaseDatabase database;
@@ -51,13 +53,9 @@ public class MatchingList extends AppCompatActivity {
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true); // 리사이클러뷰 성능[+]
         MatchingAdapter adapter = new MatchingAdapter();
 
-        adapter.addItem(new MemberInfo("김태수","남자","서울", "장애"));
-        adapter.addItem(new MemberInfo("이슬비","여자","경기도", "노인"));
-        adapter.addItem(new MemberInfo("배리나","여자","충북", "가족"));
-        adapter.addItem(new MemberInfo("성귀연","여자","전라도", "아동"));
-        recyclerView.setAdapter(adapter);
         // 이름, 성별, 지역, 분야 값 전달받기
         Intent intent = getIntent();
         name = intent.getExtras().getString("name");
@@ -76,10 +74,8 @@ public class MatchingList extends AppCompatActivity {
         // 파이어스토어 UserInfo 테이블 연결
         docRef = db.collection("UserInfo").document(user.getUid());
 
-        btn_back = findViewById(R.id.btn_matching_list_back);
-        btn_reload = findViewById(R.id.reload);
-
         //뒤로가기
+        btn_back = findViewById(R.id.btn_matching_list_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,33 +84,41 @@ public class MatchingList extends AppCompatActivity {
         });
 
         // 값 넘어오는거 체크용
+        btn_reload = findViewById(R.id.reload);
         btn_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Toast.makeText(MatchingList.this, "이름:" + name + " 성별:" + sex + " 지역:" + area + " 분야:" + field ,Toast.LENGTH_SHORT).show();
             }
         });
 
+        // 복지사 불러오기
+        db.collection("UserInfo")
+                .whereEqualTo("qual", "volunteer")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                    adapter.addItem(new MemberInfo(
+                                            (String)document.get("name"),
+                                            (String)document.get("sex"),
+                                            (String)document.get("area"),
+                                            (String)document.get("field"))
+                                    );
+                                    recyclerView.setAdapter(adapter);
 
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                // 데이를 가져오는 작업이 작 동작했을 때
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
+                                // MemberInfo memberInfo = new MemberInfo(document.get("name") + "", document.get("sex") + "", document.get("area") + "", (String) document.get("field"));
+                                // arrayList.add(memberInfo);
+                            }
 
-                } else {
-                    // 데이터를 가져오는 작업이 에러났을 때
-                }
-            }
-        });
+                            // MatchingAdapter.notifyDataSetChanged(); // 리스트저장, 새로고침
+                        } else {
 
-
-
-
-
-
+                        }
+                    }
+                });
 
 
     }
