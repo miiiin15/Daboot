@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <!--<Button
         android:id="@+id/btn_board_contents_more_menu"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="60dp"
@@ -25,7 +25,17 @@
         app:icon="@drawable/ic_more_menu"
         app:iconTint="@color/enable"
         app:layout_constraintStart_toEndOf="@+id/tv_board_contents_writeTime"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>-->
+    <Button
+        android:id="@+id/btn_go_to_chat"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ffffff"
+        app:icon="@drawable/ic_message"
+        app:iconTint="@color/enable"
+        app:layout_constraintStart_toEndOf="@+id/tv_board_contents_writeTime"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_board_contents_title"
