@@ -24,6 +24,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.regex.Pattern;
+
 public class JoinInfo extends AppCompatActivity {
 
     private Integer [] area_btn_id ={R.id.btn_join_info_Area_Seoul,R.id.btn_join_info_Area_Gyeonggi, R.id.btn_join_info_Area_Chungnam, R.id.btn_join_info_Area_Chungbuk,
@@ -42,8 +44,37 @@ public class JoinInfo extends AppCompatActivity {
     private EditText edt_Name, edt_Email;
     private LinearLayout field_form;
 
-    private String name, sex = "남성", email, area, qual, field="none", contents = "Test Contents";
+    private String name, sex = "남성", email, area="none", qual, field="none", contents = "자기소개를 적지 않았습니다.";
     private boolean form = true;
+
+    private void Call_Toast(String message){ Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();}
+
+    public boolean isName(String input) {
+        return Pattern.matches("[가-힣]*$", input);
+    }
+
+    private boolean isEmail(String input) {
+        return Pattern.matches("^[a-z0-9A-Z._-]*@[a-z0-9A-Z]*.[a-zA-Z.]*$", input);
+    }
+
+    private boolean isInfoS(String area, String field, boolean form){
+        boolean ok = true;
+        String msg ="";
+        if(area.equals("none")){
+            msg+="지역 ";
+            ok = false;
+        }
+        if(form==false){
+            if(field.equals("none")){
+            msg+="분야 ";
+            ok = false;
+            }
+        }
+        if(!ok)
+            Call_Toast(msg+"을(를) 선택해주세요.");
+        return ok;
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -117,7 +148,7 @@ public class JoinInfo extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     area = area_keyword[index];
-                    Toast.makeText(getApplicationContext(),area_keyword[index]+"를 선택하셨습니다.",Toast.LENGTH_SHORT).show();
+                    Call_Toast(area_keyword[index]+"를 선택하셨습니다.");
                 }
             });
         }
@@ -130,7 +161,7 @@ public class JoinInfo extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     field = field_keyword[index];
-                    Toast.makeText(getApplicationContext(),field_keyword[index]+"를 선택하셨습니다.",Toast.LENGTH_SHORT).show();
+                    Call_Toast(field_keyword[index]+"를 선택하셨습니다.");
                 }
             });
         }
@@ -139,19 +170,21 @@ public class JoinInfo extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //todo : "form" [복지사입니다]버튼의 여부에 따라 지역, 분야 등 값들 기본값으로 넣을지 회원 정보 구조를 개편할것인지 결정 할 것
+                //todo : 게시글 작성 댓글 작성 유효성 검사 및 edt의 maxlength 정하기
                 name = edt_Name.getText().toString();
                 email = edt_Email.getText().toString();
-                contents = "Test Contents";
-                qual = form ?  "nomal" : "volunteer";  // [복지사입니다] 버튼으로 바뀌는 boolean타입의 form변수 값에 따라 nomal(일반 사용자) | volunteer(복지사)가 DB에 들어가게 됨
+                contents = "자기소개를 적지 않았습니다.";
+                qual = form ?  "nomal" : "volunteer";
+                // [복지사입니다] 버튼으로 바뀌는 boolean타입의 form변수 값에 따라 nomal(일반 사용자) | volunteer(복지사)가 DB에 들어가게 됨
 
-                if(name.length()>0 && email.length()>0 && area.length()>0 && field.length()>0 && qual.length()>0 && !(form==false&&field=="none")){
+                if(isName(name)&&isEmail(email)&&isInfoS(area,field,form)) {
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     MemberInfo memberInfo = new MemberInfo(name,sex,email,area,field,qual,contents);
                     db.collection("UserInfo").document(user.getUid()).set(memberInfo)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(JoinInfo.this,"정보를 등록하였습니다..",Toast.LENGTH_SHORT).show();
+                                    Call_Toast("정보를 등록하였습니다.");
                                     Intent intent = new Intent(JoinInfo.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
@@ -160,13 +193,10 @@ public class JoinInfo extends AppCompatActivity {
                             .addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(JoinInfo.this,"실패.",Toast.LENGTH_SHORT).show();
+                                    Call_Toast("실패.");
                                 }
                             });
-
-                }
-                else
-                    Toast.makeText(JoinInfo.this,"입력 값을 확인해주세요.",Toast.LENGTH_SHORT).show();
+                }else {Call_Toast("입력 값을 확인해주세요");}
             }
         });
     }

@@ -93,7 +93,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="댓글"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/tv_setting_alram"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_alram" />
 
@@ -106,7 +106,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="전체"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/tv_setting_sound_permission"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
 
@@ -118,7 +118,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="쪽지"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_sound_coments"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
@@ -132,7 +132,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="댓글"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/btn_sound_all"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_sound_permission" />
 
@@ -145,7 +145,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="전화"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/tv_setting_permission"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
 
@@ -158,7 +158,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="사진"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@+id/btn_permission_call"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
 
@@ -170,7 +170,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="위치"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_permission_photo"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_permission" />
@@ -183,7 +183,7 @@
         android:track="@drawable/switch_track_selector"
         android:thumb="@drawable/switch_thumb_selector"
         android:text="쪽지"
-        android:textSize="20dp"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_alram_coments"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_alram" />
@@ -194,7 +194,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="gg04253@gmail.com"
-        android:textSize="25dp"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_setting_inquire"
         app:layout_constraintTop_toTopOf="@+id/tv_setting_inquire" />
@@ -204,7 +204,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="Version 1.0"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.528"
         app:layout_constraintStart_toEndOf="@+id/tv_setting_version"

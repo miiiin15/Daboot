@@ -2,7 +2,6 @@ package com.example.daboot.Adapter;
 
 
 import android.content.Context;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.example.daboot.Board.BoardItem;
+import com.example.daboot.Board.ComentItem;
 import com.example.daboot.R;
 
 import java.util.ArrayList;
 
-public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> {
+public class ComentAdapter extends RecyclerView.Adapter<ComentAdapter.ViewHolder> {
 
-    ArrayList<BoardItem> items = new ArrayList<BoardItem>();
+    ArrayList<ComentItem> items = new ArrayList<ComentItem>();
     Context context; //선택한 activty에 대한 context
 
     //클릭이벤트처리 정의
@@ -29,7 +28,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     }
 
 
-    public BoardAdapter(ArrayList<BoardItem> items, Context context) {
+    public ComentAdapter(ArrayList<ComentItem> items, Context context) {
         this.items = items;
         this.context = context;
     }
@@ -42,7 +41,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     @Override //뷰홀더가 만들어지는 시점에 호출되는 메소드
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.board_item,  viewGroup, false);//viewGroup는 각각의 아이템을 위해서 정의한 xml레이아웃의 최상위 레이아우싱다.
+        View itemView = inflater.inflate(R.layout.coment_item,  viewGroup, false);//viewGroup는 각각의 아이템을 위해서 정의한 xml레이아웃의 최상위 레이아우싱다.
 
         return new ViewHolder(itemView);
     }
@@ -52,9 +51,8 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        viewHolder.tv_category.setText(items.get(position).getCategory());
-        viewHolder.tv_title.setText(items.get(position).getTitle());
-        viewHolder.tv_comment.setText("("+items.get(position).getComents()+")");
+        viewHolder.tv_number.setText(items.get(position).getNumber()+"");
+        viewHolder.tv_coment.setText(items.get(position).getComent());
         viewHolder.tv_writetime.setText(items.get(position).getTime());
         //클릭리스너
         viewHolder.setOnItemClickListener(listener);
@@ -62,17 +60,17 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     }
 
     //아이템 추가
-    public  void addItem(BoardItem item){
+    public  void addItem(ComentItem item){
         items.add(item);
     }
 
     //한꺼번에 추가
-    public void addItems(ArrayList<BoardItem> items){
+    public void addItems(ArrayList<ComentItem> items){
         this.items = items;
     }
 
 
-    public BoardItem getItem(int position){
+    public ComentItem getItem(int position){
         return  items.get(position);
     }
 
@@ -84,7 +82,7 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
     //뷰홀더
     //뷰를 담아두는 역할 / 뷰에 표시될 데이터를 설정하는 역할
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_category,tv_title, tv_comment,tv_writetime;
+        TextView tv_number, tv_coment,tv_writetime;
 
 
 
@@ -93,10 +91,10 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.ViewHolder> 
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
 
-            tv_category = itemView.findViewById(R.id.tv_board_item_category);
-            tv_title = itemView.findViewById(R.id.tv_board_item_contents_title);
-            tv_comment = itemView.findViewById(R.id.tv_baord_item_comment);
-            tv_writetime = itemView.findViewById(R.id.tv_board_item_write_time);
+
+            tv_number = itemView.findViewById(R.id.tv_coment_item_number);
+            tv_coment = itemView.findViewById(R.id.tv_coment_item_coment);
+            tv_writetime = itemView.findViewById(R.id.tv_coment_item_write_time);
 
 
             //아이템 클릭이벤트

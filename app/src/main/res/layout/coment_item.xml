@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/square_invisible"
+    android:layout_height="25dp"
+    android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_coment_item_anonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_alignParentLeft="true"
+            android:textAlignment="center"
+            android:text="익명"
+            android:textColor="@color/enable"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_coment_item_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:layout_toRightOf="@id/tv_coment_item_anonymous"
+            android:text="0"
+            android:textSize="15dp"/>
+
+
+        <TextView
+            android:id="@+id/tv_coment_item_coment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@+id/tv_coment_item_number"
+
+            android:text="내용"
+            android:textAlignment="textStart"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_coment_item_write_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginHorizontal="5dp"
+            android:text="00 : 00"
+            android:textSize="15dp"/>
+
+
+</RelativeLayout>
