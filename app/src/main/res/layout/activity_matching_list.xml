@@ -39,7 +39,12 @@
             app:iconTint="@color/enable" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -47,6 +52,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#F0F0F0" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
 

@@ -12,6 +12,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.daboot.Adapter.MatchingAdapter;
 import com.example.daboot.Login.MemberInfo;
@@ -56,7 +57,17 @@ public class MatchingList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 성능[+]
         MatchingAdapter adapter = new MatchingAdapter();
 
-        // 이름, 성별, 지역, 분야 값 전달받기
+        SwipeRefreshLayout swipeRefreshLayout = findViewById(R.id.refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
+            // 이름, 성별, 지역, 분야 값 전달받기
         Intent intent = getIntent();
         name = intent.getExtras().getString("name");
         sex = intent.getExtras().getString("sex");
