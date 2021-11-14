@@ -8,6 +8,7 @@ public class BoardItem {
     private String title;
     private String writer;
     private String contents;
+    private int coments;
     private String time;
 
     public BoardItem(String category, String anonymous, String title, String writer, String contents, String time) {
@@ -19,10 +20,11 @@ public class BoardItem {
         this.time = time;
     }
 
-    public BoardItem(String uid, String category, String title, String time) {
+    public BoardItem(String uid, String category, String title, int coments, String time) {
         this.uid = uid;
         this.category = category;
         this.title = title;
+        this.coments = coments;
         this.time = time;
     }
 
@@ -72,6 +74,14 @@ public class BoardItem {
 
     public void setContents(String contents) {
         this.contents = contents;
+    }
+
+    public int getComents() {
+        return coments;
+    }
+
+    public void setComents(int coments) {
+        this.coments = coments;
     }
 
     public String getTime() {

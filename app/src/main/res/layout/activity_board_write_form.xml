@@ -90,44 +90,87 @@
             android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
+            android:maxLength="25"
             android:hint="제목을 입력하시오"/>
     </LinearLayout>
     <EditText
         android:id="@+id/edt_board_write_contents"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_margin="5dp"/>
+        android:layout_margin="5dp"
+        android:textAlignment="textStart"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
+            android:id="@+id/img_board_write1"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
             android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+            android:layout_marginHorizontal="5dp"
+            android:background="@drawable/square_white"
+            android:src="@drawable/ic_image" />
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_board_write_imgpath"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="업로드 된 이미지가 없습니다."
+                android:maxLength="25"
+                android:ellipsize="end"
+                android:textSize="15dp"
+                android:textColor="@color/enable"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_weight="1"
-            android:src="@drawable/ic_launcher_foreground" />
+                <ImageButton
+                    android:id="@+id/btn_board_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2.5dp"
+                    android:backgroundTint="@color/enable"
+                    android:tint="@color/white"
+                    android:background="@drawable/square_white"
+                    android:src="@drawable/ic_camera"/>
 
-        <Button
-            android:layout_width="70dp"
-            android:layout_height="90dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/enable"
-            android:text="+"
-            android:textSize="50dp" />
+                <ImageButton
+                    android:id="@+id/btn_board_find_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2.5dp"
+                    android:backgroundTint="@color/enable"
+                    android:tint="@color/white"
+                    android:background="@drawable/square_white"
+                    android:src="@drawable/ic_image_search"/>
+
+                <ImageButton
+                    android:id="@+id/btn_board_delete_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2.5dp"
+                    android:backgroundTint="@color/enable"
+                    android:tint="@color/white"
+                    android:background="@drawable/square_white"
+                    android:src="@drawable/ic_close"/>
+                
+            </LinearLayout>
+            
+            
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

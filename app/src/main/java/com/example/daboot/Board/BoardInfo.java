@@ -7,15 +7,19 @@ public class BoardInfo {
     private String title;
     private String writer;
     private String contents;
+    private int coments;
     private String time;
+    private String imgpath;
 
-    public BoardInfo(String category, String anonymous, String title, String writer, String contents, String time) {
+    public BoardInfo(String category, String anonymous, String title, String writer, String contents,int coments, String time,String imgpath) {
         this.category = category;
         this.anonymous = anonymous;
         this.title = title;
         this.writer = writer;
         this.contents = contents;
+        this.coments = coments;
         this.time = time;
+        this.imgpath = imgpath;
     }
 
     public String getCategory() {
@@ -58,11 +62,27 @@ public class BoardInfo {
         this.contents = contents;
     }
 
+    public int getComents() {
+        return coments;
+    }
+
+    public void setComents(int coments) {
+        this.coments = coments;
+    }
+
     public String getTime() {
         return time;
     }
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
     }
 }

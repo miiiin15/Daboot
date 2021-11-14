@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.regex.Pattern;
+
 public class Login extends AppCompatActivity {
  
 
@@ -28,6 +30,9 @@ public class Login extends AppCompatActivity {
     private DatabaseReference mDatabaseRef; // 리얼타임 DB
     private EditText edt_Id, edt_Pwd;
     private Button btn_login, btn_find, btn_join;
+
+    private void Call_Toast(String message){ Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();}
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,8 +54,11 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strID = edt_Id.getText().toString();
-                String strPWD = edt_Pwd.getText().toString();
+                /*String strID = edt_Id.getText().toString();
+                String strPWD = edt_Pwd.getText().toString();*/
+                //todo: 개발 완료하면 바꾸기
+                String strID = "vol@naver.com";
+                String strPWD = "vol1234";
 
                 mFirebaseAuth.signInWithEmailAndPassword(strID,strPWD).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -61,7 +69,7 @@ public class Login extends AppCompatActivity {
                             finish();
                         }
                         else {
-                            Toast.makeText(Login.this,"아이디 비밀번호를 확인해주세요.",Toast.LENGTH_SHORT).show();
+                            Call_Toast("아이디 비밀번호를 확인해주세요.");
                         }
                     }
                 });
