@@ -181,6 +181,10 @@ public class Write extends AppCompatActivity {
                 title = edt_title.getText().toString();
                 contents = edt_contents.getText().toString();
                 time = getCurrentDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+                if(want_photo) {
+                    imageFilename = getCurrentDate(new SimpleDateFormat("yyyyMMdd_HHmmss"));
+                    imgpath = "Board/" + category + "/" + imageFilename + ".png";
+                }
 
                 if(category.length()>0 && writer.length()>0 && title.length()>0 && contents.length()>0 && time.length()>0 && anonymous.length()>0){
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -190,8 +194,6 @@ public class Write extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     if(want_photo) { // 게시글 등록 성공시 사진 여부를 보고 사진도 올림
-                                        imageFilename = getCurrentDate(new SimpleDateFormat("yyyyMMdd_HHmmss"));
-                                        imgpath = "Board/" + category + "/" + imageFilename + ".png";
                                         StorageReference storageRef = storage.getReference();
                                         StorageReference riverRef = storageRef.child(imgpath);
                                         UploadTask uploadTask = riverRef.putFile(file);
