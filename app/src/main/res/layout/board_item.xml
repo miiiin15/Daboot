@@ -1,55 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="25dp"
     android:gravity="center">
+
 
         <TextView
             android:id="@+id/tv_board_item_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
             android:layout_alignParentLeft="true"
-            android:textAlignment="center"
+            android:layout_marginStart="5dp"
             android:text="주제"
+            android:textAlignment="center"
             android:textColor="@color/enable"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_board_item_contents_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_board_item_contents_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
+            android:layout_marginStart="5dp"
             android:layout_toRightOf="@id/tv_board_item_category"
             android:text="제목"
-            android:textSize="15dp"/>
+            android:textAlignment="textStart"
+            android:textSize="15dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_board_item_category"
+            app:layout_constraintTop_toTopOf="@+id/tv_board_item_category" />
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/tv_baord_item_comment"
-            android:textAlignment="center"
-            android:text="("
-            android:textSize="15dp"/>
         <TextView
             android:id="@+id/tv_baord_item_comment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/tv_board_item_over"
+            android:layout_marginEnd="50dp"
+            android:text="(0)"
             android:textAlignment="center"
-            android:text="0"
             android:textColor="@color/enable"
-            android:textSize="15dp"/>
-        <TextView
-            android:id="@+id/tv_board_item_over"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/tv_board_item_write_time"
-            android:textAlignment="center"
-            android:text=")"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_board_item_write_time"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_board_item_write_time"
@@ -57,8 +54,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginHorizontal="5dp"
+            android:layout_marginEnd="4dp"
             android:text="00 : 00"
-            android:textSize="15dp"/>
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

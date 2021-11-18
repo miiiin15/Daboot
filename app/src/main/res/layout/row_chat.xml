@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:id="@+id/row_chat_main">
     <TextView
         android:id = "@+id/TextView_nick"
         android:layout_width="match_parent"
@@ -10,7 +11,14 @@
         android:textSize="12sp"/> <!--채팅창에 디스플레이되는 닉네임 설정-->
     <TextView
         android:id = "@+id/TextView_msg"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"/> <!--채팅창에 디스플레이되는 메세지 설정-->
+    <TextView
+        android:id="@+id/TextView_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text = "17:34"
+        android:textSize="9dp"
+        android:textColor="@android:color/darker_gray"/> <!--채팅창에 디스플레이되는 시간 설정-->
 </LinearLayout>

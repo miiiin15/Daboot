@@ -5,7 +5,13 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
+    <ImageView
+        android:id="@+id/splash_img"
+        android:layout_width="300dp"
+        android:layout_height="375dp"
+        android:src="@drawable/splash"/>
+
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로딩"
@@ -16,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="1"
-        android:textSize="60dp"/>
+        android:textSize="60dp"/>-->
 
 </LinearLayout>
