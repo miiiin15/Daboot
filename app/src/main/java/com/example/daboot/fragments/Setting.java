@@ -40,7 +40,7 @@ public class Setting extends Fragment {
         swt5 = view.findViewById(R.id.btn_permission_location); // 위치
         swt6 = view.findViewById(R.id.btn_sound_all); // 소리-전체
         swt7 = view.findViewById(R.id.btn_sound_coments); // 소리-댓글
-        swt8 = view.findViewById(R.id.btn_permission_call); // 소리-쪽지
+        swt8 = view.findViewById(R.id.btn_sound_message); // 소리-쪽지
 
         swt1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -112,9 +112,9 @@ public class Setting extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Toast.makeText(getActivity(), "전체댓글 활성화", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "댓글소리 활성화", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getActivity(), "전체댓글 비활성화", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "댓글소리 비활성화", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -123,9 +123,9 @@ public class Setting extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Toast.makeText(getActivity(), "전체쪽지 활성화", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "쪽지소리 활성화", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getActivity(), "전체쪽지 비활성화", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "쪽지소리 비활성화", Toast.LENGTH_SHORT).show();
                 }
             }
         });
