@@ -117,10 +117,9 @@
                 android:layout_weight="3"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="홍길동"
                 android:textSize="15dp" />
 
-            <TextView
+            <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -137,8 +136,7 @@
                 android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="2021/08/15"
-                android:textSize="15dp" />
+                android:textSize="15dp" />-->
 
         </TableRow>
 
@@ -163,12 +161,11 @@
                 android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="te******"
                 android:textSize="15dp" />
 
         </TableRow>
 
-        <TableRow
+        <!--<TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -189,10 +186,9 @@
                 android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="010 1234 5678"
                 android:textSize="15dp" />
 
-        </TableRow>
+        </TableRow>-->
 
         <TableRow
             android:layout_width="match_parent"
@@ -215,7 +211,6 @@
                 android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="gg04253@gmail.com"
                 android:textSize="15dp" />
 
         </TableRow>
@@ -241,8 +236,7 @@
                 android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
-                android:text="재능기부자"
-                android:textColor="@color/volunteer"
+                android:textColor="@color/enable"
                 android:textSize="15dp" />
 
         </TableRow>
@@ -270,49 +264,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_info_field_disable"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="장애"
-                    android:textColor="@color/disable" />
-
-                <TextView
-                    android:id="@+id/tv_info_field_old"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="노인"
-                    android:textColor="@color/disable" />
-
-                <TextView
-                    android:id="@+id/tv_info_field_child"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="아동"
-                    android:textColor="@color/enable" />
-
-                <TextView
-                    android:id="@+id/tv_info_field_family"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="가족"
-                    android:textColor="@color/disable" />
-
-                <TextView
-                    android:id="@+id/tv_info_field_medical"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="의료"
-                    android:textColor="@color/enable" />
+                android:id="@+id/tv_info_field"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="@drawable/square_invisible"
+                android:gravity="center"
+                android:textColor="@color/enable"
+                android:textSize="15dp" />
 
             </LinearLayout>
 
