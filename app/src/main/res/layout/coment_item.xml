@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@drawable/square_invisible"
-    android:layout_height="25dp"
+    android:layout_height="30dp"
     android:gravity="center">
 
         <TextView
