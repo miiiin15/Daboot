@@ -9,17 +9,31 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.daboot.Board.Contents;
 import com.example.daboot.Message.ChatActivity;
 import com.example.daboot.Message.ChatData;
+import com.example.daboot.Message.ChatRoomData;
 import com.example.daboot.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
     private List<ChatData> mDataset;
     private String myNick;
-    //private final FirebaseUser user;
-    //private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:MM");
+
+    private FirebaseDatabase database;
+    private FirebaseUser user;
+    private DatabaseReference roomUserRef;
+    protected String userIdToken;
+    protected String writerIdToken;
+    protected String roomId;
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView TextView_nick;
@@ -39,7 +53,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     }
 
     public ChatAdapter(List<ChatData> myDataset, ChatActivity context, String nick){
-        //현재 여기에 null값이 들어온다...
         this.mDataset = myDataset;
         this.myNick = nick;
     }
@@ -57,13 +70,28 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
+        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userIdToken = user.getUid();
+
+        roomUserRef = database.getReference("RoomUser");
+        roomId = roomUserRef.getRef().toString();
+
+        //RoomUser의 하위 컬렉션인 roomId에 있는 키값이 user와 writer를 구분할 것인가..?
+        if(roomUserRef.child(roomId).getKey() != userIdToken){
+            writerIdToken = roomUserRef.child(roomId).getKey();
+        }
+
         ChatData chat = mDataset.get(position);
         holder.TextView_nick.setText(chat.getNick());
         holder.TextView_msg.setText(chat.getMsg());
         holder.TextView_time.setText(chat.getTime());//DTO
 
-        //내가 보낸 메세지
-        if(chat.getNick() != null && chat.getNick().equals(this.myNick)){
+        ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
+
+        //chat.getNick().equals(this.myNick) --> nick 대신 idToken으로 구별하여 위치 선정 test
+        //내가 보낸 메세지 --> DB에서 가져온 idToken값과 현재 로그인한 유저의 idToken값을 비교
+        if(chat.getNick() != null && chat.getIdToken().equals(this.userIdToken)){
             //holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.right_bubble);
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
@@ -71,7 +99,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.row_chat_main.setGravity(Gravity.RIGHT);
         }
         //상대방이 보낸 메세지
-        else {
+        else if(roomUser.getWrterIdToken().equals(this.writerIdToken)){
             //holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.TextView_msg.setBackgroundResource(R.drawable.left_bubble);
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);

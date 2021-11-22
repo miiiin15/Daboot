@@ -31,8 +31,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.daboot.Adapter.ChatAdapter;
 import com.example.daboot.Adapter.ComentAdapter;
 import com.example.daboot.MainActivity;
+import com.example.daboot.Message.ChatActivity;
+import com.example.daboot.Message.ChatData;
+import com.example.daboot.Message.ChatRoomData;
 import com.example.daboot.R;
 import com.example.daboot.fragments.Board;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +45,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -48,8 +54,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -57,6 +66,7 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class Contents extends AppCompatActivity {
 
@@ -69,7 +79,7 @@ public class Contents extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private Button btn_back;
+    private Button btn_back, btn_go_to_chat;
     private ImageButton btn_write_coment;
     private TextView tv_title, tv_contetnts, tv_time, tv_img_guide;
     private EditText edt_write_coment;
@@ -78,8 +88,16 @@ public class Contents extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private RecyclerView view_coments; //댓글창
 
+    private FirebaseDatabase database;
+    private DatabaseReference MsgRef;
+    private DatabaseReference roomUserRef;
+    private DatabaseReference userRoomRef;
     private FirebaseFirestore firestore;
     private DocumentReference docRef;
+    private DocumentReference ChatDocRef;
+    protected String email;
+    protected String writerIdToken;
+    protected String userIdToken;
 
     public void Call_Toast(String message){ Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();}
 
@@ -147,6 +165,7 @@ public class Contents extends AppCompatActivity {
         docRef = firestore.collection("Board").document(uid); // 파이어스토어 테이블 연결
 
         btn_back = findViewById(R.id.btn_board_contents_back);
+        btn_go_to_chat = findViewById(R.id.btn_go_to_chat);
 
         tv_title = findViewById(R.id.tv_board_contents_title);
         tv_time = findViewById(R.id.tv_board_contents_writeTime);
@@ -164,6 +183,54 @@ public class Contents extends AppCompatActivity {
         view_coments.setHasFixedSize(true); // 리사이클러뷰 성능강화
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         view_coments.setLayoutManager(layoutManager);
+
+        //채팅방 구현을 위한 test
+        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
+        MsgRef = database.getReference("Message"); //채팅방 자체 테이블 연동
+        roomUserRef = database.getReference("RoomUser"); //글쓴이와 사용자가 포함된 채팅방ID를 담을 수 있는 테이블 연동
+        userRoomRef = database.getReference("UserRoom"); //사용자 별 참가되어있는 채팅방을 알 수 있는 테이블 연동
+        user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
+        ChatDocRef = firestore.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
+
+        //사용자와 글쓴이의 UID 가져오기
+        userIdToken = user.getUid();
+
+        DocumentReference getWriterEmail = firestore.collection("Board").document(uid);
+        getWriterEmail.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                email = (String) document.get("writer");
+            }
+        }); //파이어스토어에서 해당 글의 글쓴이 이메일을 조회
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
+        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                writerIdToken = (String) document.getId();
+                Log.e("Message", writerIdToken);
+            }
+        });
+
+        /*Query getWriterUid = firestore.collection("UserInfo").whereEqualTo("email", email);
+        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        writerIdToken = document.getId();
+                        Log.e("Message", writerIdToken);
+                    }
+                } else {
+                }
+            }
+        });*/
+
+        ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
+        roomUser.setWrterIdToken(writerIdToken);
+        roomUser.setUserIdToken(userIdToken);
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -194,6 +261,28 @@ public class Contents extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });//취소 버튼
+
+        btn_go_to_chat.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                String roomId = ""; //채팅방 고유 UID 생성 변수
+
+                if(roomUserRef.child(roomId).getKey().equals(userIdToken) && roomUserRef.child(roomId).getKey().equals(writerIdToken)){
+                    userRoomRef.child(userIdToken).getRef();
+                } else {
+                    roomId = UUID.randomUUID().toString().replaceAll("-", "");//채딩방 고유 uid 값을 random으로 생성
+                    MsgRef.push().setValue(roomId);
+                    roomUserRef.push().setValue(roomId);
+
+                    roomUserRef.child(roomId).setValue(writerIdToken);
+                    roomUserRef.child(roomId).setValue(userIdToken);
+
+                    startActivity(new Intent(getApplicationContext(), ChatActivity.class));
+                }
+            }
+        });//채팅방으로 이동하는 로직 --> 20211119 lsj
 
         getComentData();
 

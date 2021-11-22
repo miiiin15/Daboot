@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.daboot.Message.ChatList;
 import com.example.daboot.Message.ChatListData;
 import com.example.daboot.R;
 import com.example.daboot.fragments.Message;

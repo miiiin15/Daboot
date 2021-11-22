@@ -18,7 +18,7 @@
         android:usesCleartextTraffic="true"
         android:largeHeap="true"
         android:hardwareAccelerated="false">
-        <activity android:name=".Login.Login">
+        <activity android:name=".Intro">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,11 @@
             </intent-filter>
 
         </activity>
+        <activity android:name=".Login.Login"/>
         <activity android:name=".Message.ChatActivity"/>
-        <activity android:name=".Message.ChatList"/>
         <activity android:name=".MatchingInfo"/>
         <activity android:name=".Login.Join"/>
         <activity android:name=".Login.JoinInfo"/>
-        <activity android:name=".Intro"/>
         <activity android:name=".Board.Write"/>
         <activity android:name=".Board.Contents"/>
         <activity android:name=".Board.Welfare"/>

@@ -87,7 +87,7 @@ public class Message extends Fragment {
             @Override
             public void onCancelled(@NonNull @NotNull DatabaseError databaseError) {
                 //DB를 가져오던 중 에러 발생 시,
-                Log.e("Message",String.valueOf(databaseError.toException())); //에러문 출력
+                Log.e("Message",String.valueOf(databaseError.toException()));//에러문 출력
             }
         });
 

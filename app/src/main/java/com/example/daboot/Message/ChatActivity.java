@@ -66,8 +66,8 @@ public class ChatActivity extends AppCompatActivity {
         actionBar.hide();//상단바 제거
 
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
-        //dbRef = database.getReference("Message");
-        dbRef = database.getReference("ChatList");
+        dbRef = database.getReference("Message");
+        //dbRef = database.getReference("ChatList");
         user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
         fsdb = FirebaseFirestore.getInstance(); //파이어스토어 연동
         docRef = fsdb.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
@@ -103,10 +103,6 @@ public class ChatActivity extends AppCompatActivity {
 
         btn_send.setOnClickListener(view -> {
             String msg = edt_chat.getText().toString();
-            //String time = String.valueOf(ServerValue.TIMESTAMP);
-            /*long unixTime = System.currentTimeMillis();
-            Date date = new Date(unixTime);
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));*/
             String time = simpleDateFormat.format(new Date());
 
             if (msg != null) {
@@ -120,10 +116,12 @@ public class ChatActivity extends AppCompatActivity {
             edt_chat.setText("");
         });
 
+
+        //DB 값 가져오기
         dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                ChatData chat = dataSnapshot.getValue(ChatData.class);//user.getUid() --> idToken
+                ChatData chat = dataSnapshot.getValue(ChatData.class);
                 ((ChatAdapter) mAdapter).addChat(chat);
                 mRecyclerView.scrollToPosition(chatList.size() - 1);
             }
