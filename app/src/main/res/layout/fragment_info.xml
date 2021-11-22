@@ -35,6 +35,8 @@
         android:id="@+id/img_info_profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/square_white"
         android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintStart_toStartOf="@+id/tableLayout"
         app:layout_constraintTop_toBottomOf="@+id/tv_info" />
@@ -112,7 +114,7 @@
                 android:id="@+id/tv_info_name"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="4"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
                 android:textSize="15dp" />
@@ -157,6 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
+                android:ellipsize="end"
                 android:background="@drawable/square_invisible"
                 android:gravity="center"
                 android:textSize="15dp" />
@@ -282,7 +285,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="정보수정"
+        android:text="사진등록 및 수정"
         app:layout_constraintEnd_toEndOf="@+id/btn_info_modify"
         app:layout_constraintStart_toStartOf="@+id/btn_info_modify"
         app:layout_constraintTop_toBottomOf="@+id/btn_info_modify" />
