@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/bar_board_edit_Category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_board_edit_cancel"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#ffffff"
+            app:icon="@drawable/ic_close"
+            app:iconTint="@color/enable" />
+
+
+        <Button
+            android:id="@+id/btn_board_edit_Free"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="11dp"
+            android:text="자유" />
+
+        <Button
+            android:id="@+id/btn_board_edit_Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            style="?android:attr/borderlessButtonStyle"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="11dp"
+            android:text="질문" />
+
+        <Button
+            android:id="@+id/btn_board_edit_Market"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/white"
+            android:text="장터"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="11dp" />
+
+
+        <Button
+            android:id="@+id/btn_baord_edit_finish"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#ffffff"
+            app:icon="@drawable/ic_write"
+            app:iconTint="@color/enable" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="horizontal">
+        <Switch
+            android:id="@+id/btn_board_edit_anonymous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:track="@drawable/switch_track_selector"
+            android:thumb="@drawable/switch_thumb_selector"
+            android:textSize="15dp"
+            android:textColor="@color/enable"
+            android:text="익명"/>
+        <EditText
+            android:id="@+id/edt_board_edit_title"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:maxLength="25"
+            android:hint="제목을 입력하시오"/>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_board_edit_contents"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="5dp"
+        android:textAlignment="textStart" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:orientation="vertical"/>
+
+    </LinearLayout>
+
+</LinearLayout>

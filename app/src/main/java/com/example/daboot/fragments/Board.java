@@ -118,6 +118,7 @@ public class Board extends Fragment {
             public void onItemClick(BoardAdapter.ViewHolder holder, View view, int position) {
                 BoardItem item = boardAdapter.getItem(position);
                 startActivity(new Intent(getContext(), Contents.class).putExtra("uid",item.getUid()));
+                getActivity().finish();
             }
         });
     }

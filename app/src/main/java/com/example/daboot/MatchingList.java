@@ -67,14 +67,14 @@ public class MatchingList extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         // 리얼타임데이터베이스 연동
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app");
-        //리얼타일데이터베이스 Board 테이블 연결
+        // 리얼타일데이터베이스 Board 테이블 연결
         databaseReference = database.getReference("Board");
-        //파이어스토어 연동
+        // 파이어스토어 연동
         db = FirebaseFirestore.getInstance();
         // 파이어스토어 UserInfo 테이블 연결
         docRef = db.collection("UserInfo").document(user.getUid());
 
-        //뒤로가기
+        // 뒤로가기
         btn_back = findViewById(R.id.btn_matching_list_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,12 +83,13 @@ public class MatchingList extends AppCompatActivity {
             }
         });
 
-        // 값 넘어오는거 체크용
+        // 값 넘어오는거 체크
         btn_reload = findViewById(R.id.reload);
         btn_reload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MatchingList.this, "이름:" + name + " 성별:" + sex + " 지역:" + area + " 분야:" + field ,Toast.LENGTH_SHORT).show();
+
+                // Toast.makeText(MatchingList.this, "이름:" + name + " 성별:" + sex + " 지역:" + area + " 분야:" + field ,Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -108,18 +109,13 @@ public class MatchingList extends AppCompatActivity {
                                             (String)document.get("field"))
                                     );
                                     recyclerView.setAdapter(adapter);
-
-                                // MemberInfo memberInfo = new MemberInfo(document.get("name") + "", document.get("sex") + "", document.get("area") + "", (String) document.get("field"));
-                                // arrayList.add(memberInfo);
                             }
-
-                            // MatchingAdapter.notifyDataSetChanged(); // 리스트저장, 새로고침
-                        } else {
-
                         }
                     }
                 });
 
 
     }
+
+
 }
