@@ -54,11 +54,8 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*String strID = edt_Id.getText().toString();
-                String strPWD = edt_Pwd.getText().toString();*/
-                //todo: 개발 완료하면 바꾸기
-                String strID = "vol@naver.com";
-                String strPWD = "vol1234";
+                String strID = edt_Id.getText().toString();
+                String strPWD = edt_Pwd.getText().toString();
 
                 mFirebaseAuth.signInWithEmailAndPassword(strID,strPWD).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                     @Override
