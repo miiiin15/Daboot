@@ -26,12 +26,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-<<<<<<< HEAD
+
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.daboot.Adapter.ChatAdapter;
-=======
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
+
 import com.example.daboot.Adapter.ComentAdapter;
 import com.example.daboot.Login.JoinInfo;
 import com.example.daboot.MainActivity;
@@ -59,14 +58,12 @@ import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-<<<<<<< HEAD
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-=======
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,11 +80,8 @@ public class Contents extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-<<<<<<< HEAD
     private Button btn_back, btn_go_to_chat;
-=======
     private Button btn_msg, btn_edit,btn_del;
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
     private ImageButton btn_write_coment;
     private TextView tv_title, tv_contetnts, tv_time, tv_img_guide;
     private EditText edt_write_coment;
@@ -194,13 +188,10 @@ public class Contents extends AppCompatActivity {
         docRef = firestore.collection("Board").document(uid); // 파이어스토어 테이블 연결
 
         btn_back = findViewById(R.id.btn_board_contents_back);
-<<<<<<< HEAD
         btn_go_to_chat = findViewById(R.id.btn_go_to_chat);
-=======
         btn_msg = findViewById(R.id.btn_go_to_chat);
         btn_edit = findViewById(R.id.btn_board_contents_edit);
         btn_del = findViewById(R.id.btn_board_contents_delete);
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
 
         tv_title = findViewById(R.id.tv_board_contents_title);
         tv_time = findViewById(R.id.tv_board_contents_writeTime);
@@ -219,7 +210,6 @@ public class Contents extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         view_coments.setLayoutManager(layoutManager);
 
-<<<<<<< HEAD
         //채팅방 구현을 위한 test
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
         MsgRef = database.getReference("Message"); //채팅방 자체 테이블 연동
@@ -267,9 +257,6 @@ public class Contents extends AppCompatActivity {
         ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
         roomUser.setWrterIdToken(writerIdToken);
         roomUser.setUserIdToken(userIdToken);
-=======
-
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -306,7 +293,6 @@ public class Contents extends AppCompatActivity {
             }
         });//취소 버튼
 
-<<<<<<< HEAD
         btn_go_to_chat.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -328,7 +314,6 @@ public class Contents extends AppCompatActivity {
                 }
             }
         });//채팅방으로 이동하는 로직 --> 20211119 lsj
-=======
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -342,7 +327,6 @@ public class Contents extends AppCompatActivity {
                 msg("삭제");
             }
         });
->>>>>>> b91c27d7767899b6543253e2b83d5ada4d86fc8e
 
         getComentData();
 
