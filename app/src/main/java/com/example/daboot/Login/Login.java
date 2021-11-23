@@ -30,6 +30,7 @@ public class Login extends AppCompatActivity {
     private DatabaseReference mDatabaseRef; // 리얼타임 DB
     private EditText edt_Id, edt_Pwd;
     private Button btn_login, btn_find, btn_join;
+    private String strID=".",strPWD=".";
 
     private void Call_Toast(String message){ Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();}
 
@@ -54,22 +55,27 @@ public class Login extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String strID = edt_Id.getText().toString();
-                String strPWD = edt_Pwd.getText().toString();
+                try{
+                    strID = edt_Id.getText().toString();
+                    strPWD = edt_Pwd.getText().toString();
+                    mFirebaseAuth.signInWithEmailAndPassword(strID,strPWD).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Intent intent = new Intent(Login.this, MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                            else {
+                                Call_Toast("아이디 비밀번호를 확인해주세요.");
+                            }
+                        }
+                    });
+                }catch (Exception e){
+                    Call_Toast("입력값을 확인해 주세요.");
+                }
 
-                mFirebaseAuth.signInWithEmailAndPassword(strID,strPWD).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Intent intent = new Intent(Login.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        }
-                        else {
-                            Call_Toast("아이디 비밀번호를 확인해주세요.");
-                        }
-                    }
-                });
+
             }
         });
 
