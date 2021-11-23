@@ -203,12 +203,14 @@ public class Contents extends AppCompatActivity {
 
         //채팅방 구현을 위한 test
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
+        //git push를 위한 일시적 주석처리 --> 추후 소스 수정 필요
+        /*
         MsgRef = database.getReference("Message"); //채팅방 자체 테이블 연동
         roomUserRef = database.getReference("RoomUser"); //글쓴이와 사용자가 포함된 채팅방ID를 담을 수 있는 테이블 연동
         userRoomRef = database.getReference("UserRoom"); //사용자 별 참가되어있는 채팅방을 알 수 있는 테이블 연동
         user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
         ChatDocRef = firestore.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
-
+        */
         //사용자와 글쓴이의 UID 가져오기
         userIdToken = user.getUid();
 
