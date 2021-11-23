@@ -26,11 +26,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
-import com.example.daboot.Adapter.ChatAdapter;
-
 import com.example.daboot.Adapter.ComentAdapter;
 import com.example.daboot.Login.JoinInfo;
 import com.example.daboot.MainActivity;
@@ -58,16 +53,11 @@ import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
+import java.lang.String;
 
 public class Contents extends AppCompatActivity {
 
@@ -80,8 +70,8 @@ public class Contents extends AppCompatActivity {
 
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private Button btn_back, btn_go_to_chat;
-    private Button btn_msg, btn_edit,btn_del;
+    private Button btn_back, btn_msg, btn_edit,btn_del;
+
     private ImageButton btn_write_coment;
     private TextView tv_title, tv_contetnts, tv_time, tv_img_guide;
     private EditText edt_write_coment;
@@ -90,13 +80,13 @@ public class Contents extends AppCompatActivity {
     private LinearLayoutManager layoutManager;
     private RecyclerView view_coments; //댓글창
 
-    private FirebaseDatabase database;
+    protected FirebaseDatabase database;
     private DatabaseReference MsgRef;
     private DatabaseReference roomUserRef;
     private DatabaseReference userRoomRef;
     private FirebaseFirestore firestore;
     private DocumentReference docRef;
-    private DocumentReference ChatDocRef;
+    protected DocumentReference ChatDocRef;
     protected String email;
     protected String writerIdToken;
     protected String userIdToken;
@@ -188,10 +178,11 @@ public class Contents extends AppCompatActivity {
         docRef = firestore.collection("Board").document(uid); // 파이어스토어 테이블 연결
 
         btn_back = findViewById(R.id.btn_board_contents_back);
-        btn_go_to_chat = findViewById(R.id.btn_go_to_chat);
+
         btn_msg = findViewById(R.id.btn_go_to_chat);
         btn_edit = findViewById(R.id.btn_board_contents_edit);
         btn_del = findViewById(R.id.btn_board_contents_delete);
+
 
         tv_title = findViewById(R.id.tv_board_contents_title);
         tv_time = findViewById(R.id.tv_board_contents_writeTime);
@@ -233,7 +224,7 @@ public class Contents extends AppCompatActivity {
         DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
         getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull @NotNull Task<DocumentSnapshot> task) {
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
                 writerIdToken = (String) document.getId();
                 Log.e("Message", writerIdToken);
@@ -293,7 +284,7 @@ public class Contents extends AppCompatActivity {
             }
         });//취소 버튼
 
-        btn_go_to_chat.setOnClickListener(new View.OnClickListener() {
+        btn_msg.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -314,6 +305,7 @@ public class Contents extends AppCompatActivity {
                 }
             }
         });//채팅방으로 이동하는 로직 --> 20211119 lsj
+
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
