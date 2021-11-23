@@ -171,6 +171,8 @@ public class Contents extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
+        //211123 1121 --> test lsj
+
         arrayList = new ArrayList<ComentItem>();
 
         uid = getIntent().getStringExtra("uid");
@@ -222,16 +224,16 @@ public class Contents extends AppCompatActivity {
                 email = (String) document.get("writer");
             }
         }); //파이어스토어에서 해당 글의 글쓴이 이메일을 조회
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
-        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                writerIdToken = (String) document.getId();
-                Log.e("Message", writerIdToken);
-            }
-        });
+        // userInfo 테이블에서 email을 기준으로 글쓴이의 uid를 가져오려했으나 실패
+//        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
+//        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                DocumentSnapshot document = task.getResult();
+//                writerIdToken = (String) document.getId();
+//                Log.e("Message", writerIdToken);
+//            }
+//        });
 
         /*Query getWriterUid = firestore.collection("UserInfo").whereEqualTo("email", email);
         getWriterUid.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
