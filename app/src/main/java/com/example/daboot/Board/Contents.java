@@ -171,8 +171,6 @@ public class Contents extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();//상단바 제거
 
-        //211123 1121 --> test lsj
-
         arrayList = new ArrayList<ComentItem>();
 
         uid = getIntent().getStringExtra("uid");
@@ -204,15 +202,15 @@ public class Contents extends AppCompatActivity {
         view_coments.setLayoutManager(layoutManager);
 
         //채팅방 구현을 위한 test
-        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
-        //git push를 위한 일시적 주석처리 --> 추후 소스 수정 필요
         /*
+        database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
+
         MsgRef = database.getReference("Message"); //채팅방 자체 테이블 연동
         roomUserRef = database.getReference("RoomUser"); //글쓴이와 사용자가 포함된 채팅방ID를 담을 수 있는 테이블 연동
         userRoomRef = database.getReference("UserRoom"); //사용자 별 참가되어있는 채팅방을 알 수 있는 테이블 연동
         user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
         ChatDocRef = firestore.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
-        */
+
         //사용자와 글쓴이의 UID 가져오기
         userIdToken = user.getUid();
 
@@ -225,17 +223,17 @@ public class Contents extends AppCompatActivity {
             }
         }); //파이어스토어에서 해당 글의 글쓴이 이메일을 조회
         // userInfo 테이블에서 email을 기준으로 글쓴이의 uid를 가져오려했으나 실패
-//        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
-//        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                DocumentSnapshot document = task.getResult();
-//                writerIdToken = (String) document.getId();
-//                Log.e("Message", writerIdToken);
-//            }
-//        });
+        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
+        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                DocumentSnapshot document = task.getResult();
+                writerIdToken = (String) document.getId();
+                Log.e("Message", writerIdToken);
+            }
+        });
 
-        /*Query getWriterUid = firestore.collection("UserInfo").whereEqualTo("email", email);
+        Query getWriterUid = firestore.collection("UserInfo").whereEqualTo("email", email);
         getWriterUid.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
@@ -247,11 +245,11 @@ public class Contents extends AppCompatActivity {
                 } else {
                 }
             }
-        });*/
+        });
 
         ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
         roomUser.setWrterIdToken(writerIdToken);
-        roomUser.setUserIdToken(userIdToken);
+        roomUser.setUserIdToken(userIdToken);*/
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -292,7 +290,7 @@ public class Contents extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-
+                /*
                 String roomId = ""; //채팅방 고유 UID 생성 변수
 
                 if(roomUserRef.child(roomId).getKey().equals(userIdToken) && roomUserRef.child(roomId).getKey().equals(writerIdToken)){
@@ -306,9 +304,10 @@ public class Contents extends AppCompatActivity {
                     roomUserRef.child(roomId).setValue(userIdToken);
 
                     startActivity(new Intent(getApplicationContext(), ChatActivity.class));
-                }
+                }*/
+                startActivity(new Intent(getApplicationContext(), ChatActivity.class));
             }
-        });//채팅방으로 이동하는 로직 --> 20211119 lsj
+        });//채팅방으로 이동하는 로직 --> 전 회원 오픈채팅으로 원복 211124 lsj
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
