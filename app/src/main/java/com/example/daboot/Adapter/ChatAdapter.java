@@ -30,9 +30,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     private FirebaseDatabase database;
     private FirebaseUser user;
     private DatabaseReference roomUserRef;
-    protected String userIdToken;
-    /*protected String writerIdToken;
-    protected String roomId;*/
+    protected String roomIdToken;
+    protected String userEmail;
+    protected String writerEmail;
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -72,10 +72,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position){
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app");
         user = FirebaseAuth.getInstance().getCurrentUser();
-        userIdToken = user.getUid();
+        userEmail = user.getEmail();
 
-        /*roomUserRef = database.getReference("RoomUser");
-        roomId = roomUserRef.getRef().toString();*/
+        roomUserRef = database.getReference("RoomUser");
 
         //RoomUser의 하위 컬렉션인 roomId에 있는 키값이 user와 writer를 구분할 것인가..?
         /*if(roomUserRef.child(roomId).getKey() != userIdToken){
@@ -87,11 +86,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         holder.TextView_msg.setText(chat.getMsg());
         holder.TextView_time.setText(chat.getTime());//DTO
 
-        //ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
+        ChatRoomData roomUser = new ChatRoomData(roomIdToken, writerEmail, userEmail);
 
-        //chat.getNick().equals(this.myNick) --> nick 대신 idToken으로 구별하여 위치 선정 test
-        //내가 보낸 메세지 --> DB에서 가져온 idToken값과 현재 로그인한 유저의 idToken값을 비교
-        if(chat.getNick() != null && chat.getIdToken().equals(this.userIdToken)){
+        //chat.getNick().equals(this.myNick) --> nick 대신 loginID로 구별하여 위치 선정 test
+        if(chat.getUsremail() == null){
+            chat.setUsremail(userEmail);
+        }
+        if(chat.getUsremail() != null && chat.getUsremail().equals(this.userEmail)){
             //holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.TextView_msg.setBackgroundResource(R.drawable.right_bubble);
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
@@ -99,7 +100,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.row_chat_main.setGravity(Gravity.RIGHT);
         }
         //상대방이 보낸 메세지
-        /*else if(roomUser.getWrterIdToken().equals(this.writerIdToken)){
+        /*else if(roomUser.getWriterEmail().equals(this.writerEmail)){
+            Log.e("Message4",""+ roomUser.getWriterEmail());
+            Log.e("Message5",""+ roomUser.getUserEmail());
             //holder.TextView_nick.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.TextView_msg.setBackgroundResource(R.drawable.left_bubble);
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
@@ -111,10 +114,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             //holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.row_chat_main.setGravity(Gravity.LEFT);
         }
-        /*long unixTime = System.currentTimeMillis();
-        Date date = new Date(unixTime);
-        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-        String time = simpleDateFormat.format(date);*/
     }
 
     @Override

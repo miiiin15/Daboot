@@ -1,5 +1,6 @@
 package com.example.daboot.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.daboot.Message.ChatActivity;
 import com.example.daboot.Message.ChatListData;
 import com.example.daboot.R;
 import com.example.daboot.fragments.Message;
@@ -22,6 +24,8 @@ import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatListViewHolder> {
 
@@ -47,9 +51,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull ChatListViewHolder holder, int position) {
-        Glide.with(holder.itemView)
-                .load(arrayList.get(position).getProfile())
-                .into(holder.profile);
         holder.nick.setText(arrayList.get(position).getNick());
         holder.chatContent.setText(arrayList.get(position).getChatContent());
         holder.time.setText(arrayList.get(position).getTime());
@@ -62,7 +63,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
 
     public class ChatListViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView profile;
         TextView nick;
         TextView chatContent;
         TextView time;
@@ -70,7 +70,6 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ChatLi
         public ChatListViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
-            this.profile = itemView.findViewById(R.id.profile);
             this.nick = itemView.findViewById(R.id.nick);
             this.chatContent = itemView.findViewById(R.id.chatContent);
             this.time = itemView.findViewById(R.id.time);

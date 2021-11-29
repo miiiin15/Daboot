@@ -3,27 +3,27 @@ package com.example.daboot.Message;
 
 public class ChatData {
 
-    private String idToken;
+    private String usremail;
     private String msg;
     private String nick;
     private String time;
 
     public ChatData(){}
 
-    public ChatData(String idToken, String msg, String nick, String time){
-        this.idToken = idToken;
+    public ChatData(String usremail, String msg, String nick, String time){
+        this.usremail = usremail;
         this.msg = msg;
         this.nick = nick;
         this.time = time;
 
     }
 
-    public String getIdToken() {
-        return idToken;
+    public String getUsremail() {
+        return usremail;
     }
 
-    public void setIdToken(String idToken) {
-        this.idToken = idToken;
+    public void setUsremail(String usremail) {
+        this.usremail = usremail;
     }
 
 

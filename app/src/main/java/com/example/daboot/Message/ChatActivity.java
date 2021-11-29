@@ -1,5 +1,6 @@
 package com.example.daboot.Message;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,12 +52,16 @@ public class ChatActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private List<ChatData> chatList;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-    protected String idToken;
+    protected String usremail;
     protected String nick;
 
     private EditText edt_chat;
     private Button btn_back;
     private Button btn_send;
+
+    protected String writerEmail;
+    protected String userEmail;
+    protected String roomIdToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +76,7 @@ public class ChatActivity extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
         fsdb = FirebaseFirestore.getInstance(); //파이어스토어 연동
         docRef = fsdb.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
-        idToken = user.getUid();
+        usremail = user.getEmail();
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -93,6 +98,10 @@ public class ChatActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         edt_chat = findViewById(R.id.edt_chat);
 
+        Intent itt = getIntent();
+        roomIdToken = itt.getStringExtra("roomId");
+        Log.e("Message: ",""+roomIdToken);
+
         btn_back.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -104,10 +113,12 @@ public class ChatActivity extends AppCompatActivity {
         btn_send.setOnClickListener(view -> {
             String msg = edt_chat.getText().toString();
             String time = simpleDateFormat.format(new Date());
+            //mDatabaseRef.child("UserAccount").child(firebaseUser.getUid()).setValue(account);
+
 
             if (msg != null) {
-                ChatData chat = new ChatData(idToken, msg, nick, time);
-                chat.setIdToken(idToken);
+                ChatData chat = new ChatData(usremail, msg, nick, time);
+                chat.setUsremail(usremail);
                 chat.setNick(nick);
                 chat.setMsg(msg);
                 chat.setTime(time);

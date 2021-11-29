@@ -32,16 +32,22 @@ import com.example.daboot.MainActivity;
 import com.example.daboot.Message.ChatActivity;
 import com.example.daboot.Message.ChatData;
 import com.example.daboot.Message.ChatRoomData;
+import com.example.daboot.Message.RoomPerUserData;
 import com.example.daboot.R;
 import com.example.daboot.fragments.Board;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
@@ -52,6 +58,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -82,14 +90,18 @@ public class Contents extends AppCompatActivity {
 
     protected FirebaseDatabase database;
     private DatabaseReference MsgRef;
-    private DatabaseReference roomUserRef;
+    protected DatabaseReference roomUserRef;
     private DatabaseReference userRoomRef;
+    private DatabaseReference findWriterUid;
     private FirebaseFirestore firestore;
     private DocumentReference docRef;
     protected DocumentReference ChatDocRef;
-    protected String email;
-    protected String writerIdToken;
-    protected String userIdToken;
+    protected String writerEmail;
+    protected String userEmail;
+    protected String roomIdToken;
+    protected String roomId;
+    protected Boolean userEmailToCompare;
+    protected Boolean writerEmailToCompare;
 
     public void msg(String str){
 
@@ -201,55 +213,30 @@ public class Contents extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false);
         view_coments.setLayoutManager(layoutManager);
 
-        //채팅방 구현을 위한 test
-        /*
+        //채팅방 구현을 위한 test ------------------------------------------------------------------------------------------------------------------------
         database = FirebaseDatabase.getInstance("https://daboot-4979e-default-rtdb.asia-southeast1.firebasedatabase.app"); // 파이어베이스 기능을 연동해라
 
         MsgRef = database.getReference("Message"); //채팅방 자체 테이블 연동
         roomUserRef = database.getReference("RoomUser"); //글쓴이와 사용자가 포함된 채팅방ID를 담을 수 있는 테이블 연동
         userRoomRef = database.getReference("UserRoom"); //사용자 별 참가되어있는 채팅방을 알 수 있는 테이블 연동
+        findWriterUid = database.getReference("UserAccount");
         user = FirebaseAuth.getInstance().getCurrentUser(); // 현재 로그인 한 유저
         ChatDocRef = firestore.collection("UserInfo").document(user.getUid()); // 파이어스토어 UserInfo 테이블 연결
 
         //사용자와 글쓴이의 UID 가져오기
-        userIdToken = user.getUid();
+        userEmail = user.getEmail();
+
 
         DocumentReference getWriterEmail = firestore.collection("Board").document(uid);
         getWriterEmail.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 DocumentSnapshot document = task.getResult();
-                email = (String) document.get("writer");
+                writerEmail = (String) document.get("writer");
             }
-        }); //파이어스토어에서 해당 글의 글쓴이 이메일을 조회
-        // userInfo 테이블에서 email을 기준으로 글쓴이의 uid를 가져오려했으나 실패
-        DocumentReference getWriterUid = firestore.collection("UserInfo").document(email);
-        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                DocumentSnapshot document = task.getResult();
-                writerIdToken = (String) document.getId();
-                Log.e("Message", writerIdToken);
-            }
-        });
+        }); //파이어스토어에서 해당 글의 글쓴이 UID를 조회 후, RoomUser에 담기 --> firebase가 아닌 firestore로 변경
 
-        Query getWriterUid = firestore.collection("UserInfo").whereEqualTo("email", email);
-        getWriterUid.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull @NotNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
-                        writerIdToken = document.getId();
-                        Log.e("Message", writerIdToken);
-                    }
-                } else {
-                }
-            }
-        });
-
-        ChatRoomData roomUser = new ChatRoomData(writerIdToken, userIdToken);
-        roomUser.setWrterIdToken(writerIdToken);
-        roomUser.setUserIdToken(userIdToken);*/
+        //-------------------------------------------------------------------------------------------------------------------------------------------
 
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -285,29 +272,51 @@ public class Contents extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });//취소 버튼
-
+//---------------------------------------------------------------------------------------------------------------------------------------------------
         btn_msg.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                /*
-                String roomId = ""; //채팅방 고유 UID 생성 변수
+                /*roomUserRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull @NotNull DataSnapshot dataSnapshot, @Nullable @org.jetbrains.annotations.Nullable String s) {
+                        ChatRoomData bringValue = dataSnapshot.getValue(ChatRoomData.class);
+                        userEmailToCompare = Boolean.valueOf(bringValue.getUserEmail());
+                        writerEmailToCompare = Boolean.valueOf(bringValue.getWriterEmail());
+                    }
 
-                if(roomUserRef.child(roomId).getKey().equals(userIdToken) && roomUserRef.child(roomId).getKey().equals(writerIdToken)){
-                    userRoomRef.child(userIdToken).getRef();
-                } else {
-                    roomId = UUID.randomUUID().toString().replaceAll("-", "");//채딩방 고유 uid 값을 random으로 생성
-                    MsgRef.push().setValue(roomId);
-                    roomUserRef.push().setValue(roomId);
+                    @Override
+                    public void onChildChanged(@NonNull @NotNull DataSnapshot dataSnapshot, @Nullable @org.jetbrains.annotations.Nullable String s) {}
+                    @Override
+                    public void onChildRemoved(@NonNull @NotNull DataSnapshot dataSnapshot) {}
+                    @Override
+                    public void onChildMoved(@NonNull @NotNull DataSnapshot dataSnapshot, @Nullable @org.jetbrains.annotations.Nullable String s) {}
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError databaseError) {}
+                });
+                if(userEmailToCompare && writerEmailToCompare){
+                    Log.e("Can I ride this Logic?","");
+                    Intent itt = new Intent(Contents.this, ChatActivity.class);
+                    itt.putExtra("roomId",roomUserRef.child("roomIdToken").toString());
+                    startActivity(itt);//이것도 손봐야돼
+                }else{
 
-                    roomUserRef.child(roomId).setValue(writerIdToken);
-                    roomUserRef.child(roomId).setValue(userIdToken);
-
-                    startActivity(new Intent(getApplicationContext(), ChatActivity.class));
                 }*/
+
+                roomId = UUID.randomUUID().toString().replace("-","");
+                if(userEmail != writerEmail){
+                    ChatRoomData roomUser = new ChatRoomData(roomIdToken, writerEmail, userEmail);
+                    roomUser.setRoomIdToken(roomId);
+                    roomUser.setWriterEmail(writerEmail);
+                    roomUser.setUserEmail(userEmail);
+                    roomUserRef.child(roomId).setValue(roomUser);
+                }
+
                 startActivity(new Intent(getApplicationContext(), ChatActivity.class));
             }
-        });//채팅방으로 이동하는 로직 --> 전 회원 오픈채팅으로 원복 211124 lsj
+        });
+        //채팅방으로 이동하는 로직 --> 전 회원 오픈채팅으로 원복 211124 lsj
+        //-------------------------------------------------------------------------------------------------------------------------------------------
 
         btn_edit.setOnClickListener(new View.OnClickListener() {
             @Override
